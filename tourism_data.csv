@@ -1,4 +1,4 @@
-Code,Country,Year,Tourism expenditure (millions of US dollars),Tourist/visitor arrivals (thousands)
+Code,Country,Year,Tourism_expenditure,Tourist_arrivals
 8,Albania,2021,2480.0,5515.0
 12,Algeria,2021,83.0,125.0
 20,Andorra,2021,,1949.0
