@@ -54,7 +54,7 @@
     "color": {
       "field": "Tourist_arrivals",
       "type": "quantitative",
-      "scale": {"type": "log"},
+      
       // "scale": {
       //   "type": "threshold",
       //   "domain": [500, 5000, 10000, 20000, 40000],
