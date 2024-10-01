@@ -1,6 +1,6 @@
 {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-    "title": "Tourism Arrivals and Expenditure",
+    "title": "Tourist Arrivals and Expenditures",
     "width": 800,
     "height": 400,
     "projection": {"type": "equalEarth"},
@@ -13,24 +13,24 @@
         "lookup": "properties.NAME",
         "from": {
           "data": {
-            "url": "https://raw.githubusercontent.com/amberphy/Dataset/refs/heads/main/cleaned_tourism_data.csv"
+            "url": "https://raw.githubusercontent.com/amberphy/Dataset/refs/heads/main/tourism_data.csv"
           },
           "key": "Country",
-          "fields": ["Value"]
+          "fields": ["Tourist/visitor arrivals (thousands)"]
       }
       },
-      {"calculate": "datum.Value", "as": "Expenditures"}
+      {"calculate": "datum.Tourist/visitor arrivals (thousands)", "as": "Tourist/visitor arrivals (thousands)"}
     ],
     "mark": {"type": "geoshape"},
     "encoding": {
       "color": {
-        "field": "Expenditures",
+        "field": "Tourist/visitor arrivals (thousands)",
         "type": "quantitative",
         "scale": {"type": "log"}
       },
       "tooltip": [
         {"field": "properties.NAME", "type": "nominal", "title": "Country"},
-        {"field": "Expenditures", "type": "quantitative"}
+        {"field": "Tourist/visitor arrivals (thousands)", "type": "quantitative"}
       ]
     }
    }
