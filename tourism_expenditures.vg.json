@@ -68,7 +68,12 @@
       "scale": {"type": "log",
        "domain": [300, 900, 6000, 9000, 15000]
       },
-      "legend": {"title": "Log scale of Tourist Arrivals (thousands)"}
+      "legend": {"title": "Log of Tourist Arrivals (thousands)",
+              "orient": "bottom",
+              "direction": "horizontal",
+              "columns": 6,
+              "labelLimit": 400,
+              "symbolSize": 300}
     },
     "tooltip": [
       {"field": "properties.NAME", "type": "nominal", "title": "Country"},
