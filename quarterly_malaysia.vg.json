@@ -2,13 +2,14 @@
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
     "width": 370,
     "height": 100,
-    "title": "Tourist Arrivals by Region, Year, and Quarter",
+    "title": "Tourist Arrivals to Malaysia across Region, Year, and Quarter",
     "data": {
       "url": "https://raw.githubusercontent.com/amberphy/FIT3179/refs/heads/main/quarterly_arrivals_malaysia_data.csv"
     },
     "params": [
       {
         "name": "Year_selection",
+        "value": 2020,
         "bind": {
           "input": "select",
           "options": [2015, 2016, 2017, 2018, 2019, 2020],

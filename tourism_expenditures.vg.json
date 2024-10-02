@@ -1,6 +1,6 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "title": "Tourist Arrivals and Expenditures",
+  "title": "Tourist Arrivals in 2020",
   "width": 600,
   "height": 350,
   "projection": {"type": "equalEarth"},
