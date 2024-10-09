@@ -4,7 +4,7 @@
     "height": 100,
     "title": "Tourist Arrivals to Malaysia across Region, Year, and Quarter",
     "data": {
-      "url": "https://raw.githubusercontent.com/amberphy/FIT3179/refs/heads/main/quarterly_arrivals_malaysia_data.csv"
+      "url": "https://raw.githubusercontent.com/amberphy/FIT3179/refs/heads/main/datasets/quarterly_arrivals_malaysia_data.csv"
     },
     "params": [
       {

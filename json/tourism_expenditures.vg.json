@@ -66,7 +66,7 @@
           "lookup": "properties.NAME",
           "from": {
             "data": {
-              "url": "https://raw.githubusercontent.com/amberphy/FIT3179/refs/heads/main/tourism_data.csv"
+              "url": "https://raw.githubusercontent.com/amberphy/FIT3179/refs/heads/main/datasets/tourism_data.csv"
             },
             "key": "Country",
             "fields": [
