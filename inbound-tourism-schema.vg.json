@@ -1,0 +1,46 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "title": "Inbound Tourism Expenditure by Products (2000-2022)",
+    "data": {
+      "url": "https://raw.githubusercontent.com/amberphy/FIT3179/refs/heads/main/inbound-tourism-expenditure-of-visitors-by-products.csv"
+    },
+    "transform": [
+      {"filter": "datum['Value in RM Million'] != '-'"},
+      {
+        "calculate": "toNumber(datum['Value in RM Million'])",
+        "as": "Expenditure"
+      }
+    ],
+    "width": "container",
+    "height": 400,
+    "encoding": {
+      "x": {
+        "field": "Year",
+        "type": "temporal",
+        "axis": {"title": "Year", "grid": false}
+      },
+      "y": {
+        "aggregate": "sum",
+        "field": "Expenditure",
+        "type": "quantitative",
+        "axis": {"title": "Expenditure (RM Million)"}
+      },
+      "color": {
+        "field": "Products",
+        "type": "nominal",
+        "title": "Product Types",
+        "legend": {"title": "Products"}
+      },
+      "tooltip": [
+        {"field": "Products", "type": "nominal"},
+        {"field": "Year", "type": "temporal"},
+        {"field": "Expenditure", "type": "quantitative", "title": "Expenditure (RM Million)"}
+      ]
+    },
+    "mark": {"type": "area", "interpolate": "monotone", "opacity": 0.7},
+    "config": {
+      "view": {"stroke": "transparent"},
+      "axis": {"labelFontSize": 12, "titleFontSize": 14}
+    }
+  }
+  
