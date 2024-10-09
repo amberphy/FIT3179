@@ -57,6 +57,15 @@
     
         </div>
         <!-- end pure grid group -->
+         <!-- pure grid group -->
+         <div class="pure-g">
+          <div class="pure-u-1-1">
+            <h1>Global Tourism and Arrivals to Malaysia Visualisation</h1>
+            <p>The number of tourists/visitors arriving at each country/region including their expenditures. <br> 
+            We analyse the inbound quarterly arrivals to Malaysia from other regions.</p>
+          </div>
+        </div>
+        <!-- end pure grid group -->
         <!-- pure grid group -->
         <div class="pure-g">
           <div class="pure-u-1-2">
@@ -110,6 +119,7 @@
         var specVis1 = "./json/tourism_expenditures.vg.json";
         var specVis2 = "./json/quarterly_malaysia.vg.json";
         var specVis3 = "./json/inbound-tourism-schema.vg.json";
+        var specVis4 = "./json/hotel_guests_by_states.vg.json";
     
         vegaEmbed('#vis1', specVis1, { "actions": false });
     
@@ -118,6 +128,9 @@
         }).catch(console.error);
 
         vegaEmbed('#vis3', specVis3, { "actions": false });
+
+        vegaEmbed('#vis4', specVis4, { "actions": false });
+    
 
 
       </script>
