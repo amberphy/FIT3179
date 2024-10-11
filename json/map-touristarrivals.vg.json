@@ -1,0 +1,106 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "width": 800,
+    "height": 500,
+    "projection": {
+        "type": "equalEarth"
+      },
+    "data": {
+          "url": "https://raw.githubusercontent.com/FIT3179/Vega-Lite/main/2_symbol_map/js/ne_110m_admin_0_countries.topojson",
+          "format": {
+            "type": "topojson",
+            "feature": "ne_110m_admin_0_countries"
+          }
+        },
+    "layer": [
+      {
+        "transform": [
+        {
+          "calculate": "'Data is not available in ' + datum.properties.NAME",
+          "as": "note"
+        }
+        ],
+        "mark": {
+          "type": "geoshape",
+          "fill": "lightgray",
+          "stroke": "white",
+          "strokeWidth": 0.5
+        },
+        "encoding": {
+            "tooltip": {
+              "field": "note"
+            }
+        }
+      },
+      {
+        "data": {
+          "url": "https://raw.githubusercontent.com/FIT3179/Vega-Lite/main/7_others/oceans.topojson",
+          "format": {
+            "type": "topojson",
+            "feature": "oceans"
+          }
+        },
+        "mark": {
+          "type": "geoshape",
+          "fill": "skyblue"
+        }
+      },
+      {
+        "data": {
+          "url": "https://raw.githubusercontent.com/FIT3179/Vega-Lite/main/2_symbol_map/js/WorldMapWithGraticules.topojson",
+          "format": {
+            "type": "topojson",
+            "feature": "ne_110m_graticules_30"
+          }
+        },
+        "mark": {
+          "type": "geoshape",
+          "fill": null,
+          "stroke": "lightgray"
+        }
+      },
+      {
+        "transform": [
+          {
+            "lookup": "properties.NAME",
+            "from": {
+              "data": {
+                "url": "https://raw.githubusercontent.com/amberphy/FIT3179/refs/heads/main/datasets/TouristArrivalsToMalaysiaByCountryNationality.csv"
+              },
+              "key": "TO_COUNTRY",
+              "fields": ["latitude","longitude"]
+            },
+            "as": ["origin_latitude", "origin_longitude"]
+          },
+          {
+            "lookup": "destination",
+            "from": {
+              "data": {
+                "url": "https://raw.githubusercontent.com/amberphy/FIT3179/refs/heads/main/datasets/TouristArrivalsToMalaysiaByCountryNationality.csv"
+              },
+              "key": "FROM_COUNTRY",
+              "fields": ["latitude", "longitude"]
+            },
+            "as": ["dest_latitude", "dest_longitude"]
+          }
+        ],
+        "projection": {
+          "type": "mercator"
+        },
+        "mark": "rule",
+        "encoding": {
+          "longitude": {
+            "field": "origin_longitude",
+            "type": "quantitative"
+          },
+          "latitude": {
+            "field": "origin_latitude",
+            "type": "quantitative"
+          },
+          "longitude2": {"field": "dest_longitude"},
+          "latitude2": {"field": "dest_latitude"}
+        }
+      }
+    ]
+  }
+  
