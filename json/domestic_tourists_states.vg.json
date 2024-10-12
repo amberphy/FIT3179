@@ -1,41 +1,117 @@
 {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "title": "TOP TEN MARKETS ARRIVALS",
+    "description": "Vega-Lite version of bar chart from https://observablehq.com/@d3/learn-d3-scales.",
     "data": {
-        "url": "https://raw.githubusercontent.com/amberphy/FIT3179/refs/heads/main/datasets/states_visited.csv"
+      "url": "https://raw.githubusercontent.com/amberphy/FIT3179/refs/heads/main/datasets/MarketsArrivals.csv"
     },
-    "title": "Number of Domestic Tourists By State Visted 2022",
-    "config": {
-        "view": {
-            "strokeWidth": 0,
-            "step": 15
-        },
-        "axis": {
-            "domain": false
+    "params": [
+      {
+        "name": "Year",
+        "value": 2022,
+        "bind": {
+          "input": "select",
+          "options": [2019, 2021, 2022],
+          "labels": ["2019", "2021", "2022"],
+          "name": "Year Selection: "
         }
-    },
-    "mark": "rect",
-    "encoding": {
-        "x": {
-            "field": "state_visited",
+      }
+    ],
+    "transform": [
+      {"filter": "datum.Country_Of_Nationality !== 'Total'"},
+      {"filter": "datum.Year == Year"},
+      {"calculate": "toNumber(datum.Arrivals)", "as": "Arrivals"},
+      {"calculate": "toNumber(datum.Market_Share)", "as": "Market_Share"}
+    ],
+    "hconcat": [
+      {
+        "width": 300,
+        "encoding": {
+          "y": {
+            "field": "Country_Of_Nationality",
             "type": "nominal",
-            "title": "State Visited",
-            "axis": {
-                "labelAngle": -40
-            }
-        },
-        "y": {
-            "field": "state_of_origin",
-            "type": "nominal",
-            "title": "State of Origin"
-        },
-        "color": {
-            "field": "number_of_tourists",
-            "aggregate": "max",
+            "sort": {"field": "Arrivals", "order": "descending"},
+            "title": "Country of Nationality"
+          },
+          "x": {
+            "field": "Arrivals",
             "type": "quantitative",
-            "legend": {
-                "title": "Number of Tourist"
+            "title": "Tourist Arrivals to Malaysia"
+          },
+          "tooltip": [
+            {"field": "Country_Of_Nationality", "title": "Country"},
+            {"field": "Arrivals", "title": "Arrivals", "format": ","}
+          ]
+        },
+        "layer": [
+          {
+            "mark": "bar",
+            "encoding": {
+              "color": {
+                "field": "Arrivals",
+                "type": "quantitative",
+                "title": "Number of tourists"
+              }
             }
+          },
+          {
+            "mark": {
+              "type": "text",
+              "align": "right",
+              "xOffset": 40,
+              "aria": false
+            },
+            "encoding": {
+              "text": {
+                "field": "Arrivals",
+                "type": "quantitative",
+                "format": ",",
+                "formatType": "number"
+              },
+              "color": {
+                "condition": {
+                  "test": {"field": "Arrivals", "gt": 10},
+                  "value": "darkblue"
+                },
+                "value": "black"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "description": "Pie Chart with percentage_tooltip",
+        "title": "Market Shares",
+        "data": {
+          "url": "https://raw.githubusercontent.com/amberphy/FIT3179/refs/heads/main/datasets/MarketsArrivals.csv"
+        },
+        "transform": [
+          {"filter": "datum.Country_Of_Nationality !== 'Total'"},
+          {"filter": "datum.Year == Year"},
+          {"calculate": "toNumber(datum.Arrivals)", "as": "Arrivals"},
+          {"calculate": "toNumber(datum.Market_Share)", "as": "Market_Share"}
+        ],
+        "mark": {"type": "arc", "tooltip": true},
+        "encoding": {
+          "theta": {
+            "field": "Market_Share",
+            "type": "quantitative",
+            "stack": "normalize"
+          },
+          "color": {
+            "field": "Country_Of_Nationality",
+            "type": "nominal",
+            "title": "Country of Nationality"
+          },
+          "tooltip": [
+            {
+              "field": "Country_Of_Nationality",
+              "title": "Country of Nationality"
+            },
+            {"field": "Arrivals", "title": "Tourist Arrivals", "format": ","},
+            {"field": "Market_Share", "title": "Market Share (%)", "format": ","}
+          ]
         }
-    }
+      }
+    ]
   }
-  
