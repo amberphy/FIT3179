@@ -1,0 +1,118 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "description": "A horizontal bar chart comparing the purpose of visits for the years 2019 and 2021.",
+    "data": {
+      "url": "https://raw.githubusercontent.com/amberphy/FIT3179/refs/heads/main/datasets/ChangeInPurposeOfVisits.csv"
+    },
+    "hconcat": [
+      {
+        "title": "Change from 2021 to 2022",
+        "params": [
+          {
+            "name": "hover",
+            "select": {"type": "point", "on": "pointerover", "clear": "pointerout"}
+          }
+        ],
+        "mark": {"type": "bar", "color": "#eee","tooltip": true},
+        "transform": [
+          {
+            "filter": "datum.Year == '2022/2021'"
+          }
+        ],
+        "encoding": {
+          "x": {
+            "field": "Emoji",
+            "type": "nominal",
+            "axis": {
+              "domain": false,
+              "ticks": false,
+              "labelAngle": 0,
+              "labelPadding": 4
+            }
+          },
+          "y": {
+            "field": "Visitors",
+            "type": "quantitative",
+            "axis": {
+              "gridColor": {
+                "condition": {"test": "datum.value === 0", "value": "black"},
+                "value": "#ddd"
+              }
+            }
+          },
+          "color": {
+            "condition": {
+              "test": "datum.Visitors > 0",
+              "value": "green"
+            },
+            "value": "red"
+          },
+          "opacity": {
+            "condition": {
+              "param": "hover",
+              "value": 0.8
+            },
+            "value": 0.5
+          }
+        }
+      },
+      {
+        "title": "Purpose of Visits in 2021",
+        "params": [
+          {
+            "name": "hover",
+            "select": {"type": "point", "on": "pointerover", "clear": "pointerout"}
+          }
+        ],
+        "mark": {"type": "bar", "tooltip": true},
+        "transform": [
+          {
+            "filter": "datum.Year == '2022/2019'"
+          }
+        ],
+        "encoding": {
+          "x": {
+            "field": "Emoji",
+            "type": "nominal",
+            "axis": {
+              "domain": false,
+              "ticks": false,
+              "labelAngle": 0,
+              "labelPadding": 4
+            }
+          },
+          "y": {
+            "field": "Visitors",
+            "type": "quantitative",
+            "axis": {
+              "gridColor": {
+                "condition": {"test": "datum.value === 0", "value": "black"},
+                "value": "#ddd"
+              }
+            }
+          },
+          "color": {
+            "condition": {
+              "test": "datum.Visitors > 0",
+              "value": "green"
+            },
+            "value": "red"
+          },
+          "opacity": {
+            "condition": {
+              "param": "hover",
+              "value": 0.8
+            },
+            "value": 0.5
+          }
+        }
+      }
+    ],
+    "config": {
+      "legend": {
+        "title": "Purpose of Visit",
+        "labelExpr": "datum.Purpose == 'Leisure' ? '🎉 Leisure' : datum.Purpose == 'Business' ? '💼 Business' : datum.Purpose == 'Visit Friends/Family' ? '👪 Family' : datum.Purpose"
+      }
+    }
+  }
+  
