@@ -101,7 +101,8 @@
           "color": {
             "field": "Country_Of_Nationality",
             "type": "nominal",
-            "title": "Country of Nationality"
+            "title": "Country of Nationality",
+            "scale": {"scheme": "set3"}
           },
           "tooltip": [
             {

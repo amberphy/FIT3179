@@ -1,0 +1,21 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "data": { "url": "https://raw.githubusercontent.com/amberphy/FIT3179/refs/heads/main/datasets/PurposeOfVisits.csv"},
+  
+    "mark": "bar",
+    "width": {"step": 50},
+    "encoding": {
+      "y": {
+        "aggregate": "sum", "field": "Visitors",
+        "title": "Percentage",
+        "stack":  "normalize",
+        "sort": "-y"
+      },
+      "x": {"field": "Year"},
+      "color": {
+        "field": "Purpose",
+        "scale": {"scheme": "pastel2"}
+      }
+    }
+  }
+  
