@@ -1,10 +1,16 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "title": "Tourist Arrivals in 2020",
+  "title": "Tourist Arrivals in Selected Year",
   "width": 600,
   "height": 350,
   "projection": {
-    "type": "equalEarth"
+    "type": "naturalEarth1",
+    "center": {
+      "expr": "center_to"
+    },
+    "scale": {
+      "expr": "zoom_level"
+    }
   },
   "data": {
     "url": "https://raw.githubusercontent.com/amberphy/FIT3179/refs/heads/main/ne_50m.json",
@@ -13,6 +19,29 @@
       "feature": "ne_50m_admin_0_countries"
     }
   },
+  "params": [
+    {
+      "name": "zoom_level",
+      "value": 105,
+      "bind": {
+        "input": "range",
+        "min": 100,
+        "max": 500,
+        "step": 10,
+        "name": "Zoom: "
+      }
+    },
+    {
+      "name": "center_to",
+      "value": [0, 0],
+      "bind": {
+        "input": "select",
+        "options": [null, [14.5501, 47.5162], [86.6611, 47.2129], [103.8667, 13.4125], [37.9062, 0.0236], [-100.1667, 48.1667], [-51.9253, -14.2350]],
+        "labels": ["World", "Europe", "Asia", "Southeast Asia", "Africa", "North America", "South America"],
+        "name": "Map Centre: "
+      }
+    }
+  ],
   "layer": [
     {
       "transform": [
@@ -29,7 +58,9 @@
       },
       "encoding": {
         "tooltip": {
-          "field": "note"
+          "field": "note",
+          "type": "nominal",
+          "title": "Note"
         }
       }
     },
@@ -69,20 +100,25 @@
               "url": "https://raw.githubusercontent.com/amberphy/FIT3179/refs/heads/main/datasets/tourism_data.csv"
             },
             "key": "Country",
-            "fields": [
-              "Tourist_arrivals"
-            ]
+            "fields": ["Tourist_arrivals", "Tourism_expenditure", "Year"]
           },
           "default": null
         },
         {
-          "calculate": "isValid(datum.Tourist_arrivals) && datum.Tourist_arrivals > 0 ? datum.Tourist_arrivals : 100",
+          "filter": "datum.Year == 2021"
+        },
+        {
+          "calculate": "isValid(datum.Tourist_arrivals) ? datum.Tourist_arrivals : null",
           "as": "Tourist_arrivals"
+        },
+        {
+          "calculate": "isValid(datum.Tourism_expenditure) ? datum.Tourism_expenditure : null",
+          "as": "Tourism_expenditure"
         }
       ],
       "mark": {
         "type": "geoshape",
-        "stroke": "black",
+        "stroke": "white",
         "strokeWidth": 0.8
       },
       "encoding": {
@@ -94,19 +130,13 @@
           "field": "Tourist_arrivals",
           "type": "quantitative",
           "scale": {
-            "type": "log",
-            "domain": [
-              300,
-              900,
-              6000,
-              9000,
-              15000
-            ]
+            "type": "linear",
+            "domain": [0, 500, 1000, 5000, 10000, 45000, 49000]
           },
           "legend": {
-            "title": "Log of Tourist Arrivals (thousands)",
-            "orient": "bottom",
-            "direction": "horizontal",
+            "title": "Tourist Arrivals (thousands)",
+            "orient": "right",
+            "direction": "vertical",
             "columns": 6,
             "labelLimit": 400,
             "symbolSize": 300
@@ -121,7 +151,14 @@
           {
             "field": "Tourist_arrivals",
             "type": "quantitative",
-            "title": "Tourist/Visitor Arrivals (thousands)"
+            "title": "Tourist/Visitor Arrivals (thousands)",
+            "format": ","
+          },
+          {
+            "field": "Tourism_expenditure",
+            "type": "quantitative",
+            "title": "Expenditure",
+            "format": ","
           }
         ]
       }
