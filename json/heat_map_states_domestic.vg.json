@@ -1,0 +1,40 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "data": {
+        "url": "https://raw.githubusercontent.com/amberphy/FIT3179/refs/heads/main/datasets/states_visited.csv"
+    },
+    "title": "Number of Domestic Tourists By State Visted 2022",
+    "config": {
+        "view": {
+            "strokeWidth": 0,
+            "step": 15
+        },
+        "axis": {
+            "domain": false
+        }
+    },
+    "mark": "rect",
+    "encoding": {
+        "x": {
+            "field": "state_visited",
+            "type": "nominal",
+            "title": "State Visited",
+            "axis": {
+                "labelAngle": -40
+            }
+        },
+        "y": {
+            "field": "state_of_origin",
+            "type": "nominal",
+            "title": "State of Origin"
+        },
+        "color": {
+            "field": "number_of_tourists",
+            "aggregate": "max",
+            "type": "quantitative",
+            "legend": {
+                "title": "Number of Tourist"
+            }
+        }
+    }
+  }

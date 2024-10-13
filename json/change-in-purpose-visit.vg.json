@@ -57,7 +57,7 @@
         }
       },
       {
-        "title": "Purpose of Visits in 2021",
+        "title": "Change from 2019 to 2022",
         "params": [
           {
             "name": "hover",
@@ -107,12 +107,6 @@
           }
         }
       }
-    ],
-    "config": {
-      "legend": {
-        "title": "Purpose of Visit",
-        "labelExpr": "datum.Purpose == 'Leisure' ? '🎉 Leisure' : datum.Purpose == 'Business' ? '💼 Business' : datum.Purpose == 'Visit Friends/Family' ? '👪 Family' : datum.Purpose"
-      }
-    }
+    ]
   }
   

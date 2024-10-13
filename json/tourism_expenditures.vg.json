@@ -1,6 +1,9 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "title": "Tourist Arrivals in Selected Year",
+  "title": {"text": "Tourist Arrivals and Expenditures in 2021",
+"font": "Serif",
+"fontSize": 18,
+"fontWeight": "bold"},
   "width": 600,
   "height": 350,
   "projection": {
@@ -28,7 +31,7 @@
         "min": 100,
         "max": 500,
         "step": 10,
-        "name": "Zoom: "
+        "name": "Zoom: "    
       }
     },
     {
@@ -139,7 +142,11 @@
             "direction": "vertical",
             "columns": 6,
             "labelLimit": 400,
-            "symbolSize": 300
+            "symbolSize": 300,
+            "titleFont": "Serif", 
+            "titleFontSize": 14,   
+            "labelFont": "Serif", 
+            "labelFontSize": 12   
           }
         },
         "tooltip": [
@@ -157,7 +164,7 @@
           {
             "field": "Tourism_expenditure",
             "type": "quantitative",
-            "title": "Expenditure",
+            "title": "Expenditure (millions of US dollars)",
             "format": ","
           }
         ]
