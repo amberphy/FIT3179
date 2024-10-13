@@ -1,9 +1,10 @@
 body * {
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Outfit', sans-serif;
 }
 
 h1 {
     font-weight: 900;
+    font-family: "Orbitron", sans-serif;
 }
 
 body {
@@ -42,3 +43,4 @@ body {
 .small-font {
     font-size: 14px;
 }
+
