@@ -1,11 +1,14 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "title": {"text": "Tourist Arrivals and Expenditures in 2021",
-"font": "Orbitron",
-"fontSize": 18,
-"fontWeight": "bold"},
-  "width": 600,
-  "height": 350,
+  "title": {
+    "text": "Tourist Arrivals and Expenditures in 2021",
+    "font": "Orbitron",
+    "fontSize": 18,
+    "fontWeight": "bold",
+    "offset": 20
+  },
+  "width": 1080,
+  "height": 550,
   "projection": {
     "type": "naturalEarth1",
     "center": {
@@ -15,6 +18,7 @@
       "expr": "zoom_level"
     }
   },
+  "background": "#eaeaea",
   "data": {
     "url": "https://raw.githubusercontent.com/amberphy/FIT3179/refs/heads/main/ne_50m.json",
     "format": {
@@ -25,22 +29,62 @@
   "params": [
     {
       "name": "zoom_level",
-      "value": 105,
+      "value": 190,
       "bind": {
         "input": "range",
-        "min": 100,
+        "min": 190,
         "max": 500,
         "step": 10,
-        "name": "Zoom: "    
+        "name": "Zoom: "
       }
     },
     {
       "name": "center_to",
-      "value": [0, 0],
+      "value": [
+        0,
+        0
+      ],
       "bind": {
-        "input": "select",
-        "options": [null, [14.5501, 47.5162], [86.6611, 47.2129], [103.8667, 13.4125], [37.9062, 0.0236], [-100.1667, 48.1667], [-51.9253, -14.2350]],
-        "labels": ["World", "Europe", "Asia", "Southeast Asia", "Africa", "North America", "South America"],
+        "input": "radio",
+        "options": [
+          [
+            0,
+            0
+          ],
+          [
+            14.5501,
+            47.5162
+          ],
+          [
+            86.6611,
+            47.2129
+          ],
+          [
+            103.8667,
+            13.4125
+          ],
+          [
+            37.9062,
+            0.0236
+          ],
+          [
+            -100.1667,
+            48.1667
+          ],
+          [
+            -51.9253,
+            -14.2350
+          ]
+        ],
+        "labels": [
+          "World",
+          "Europe",
+          "Asia",
+          "Southeast Asia",
+          "Africa",
+          "North America",
+          "South America"
+        ],
         "name": "Map Centre: "
       }
     }
@@ -103,7 +147,11 @@
               "url": "https://raw.githubusercontent.com/amberphy/FIT3179/refs/heads/main/datasets/tourism_data.csv"
             },
             "key": "Country",
-            "fields": ["Tourist_arrivals", "Tourism_expenditure", "Year"]
+            "fields": [
+              "Tourist_arrivals",
+              "Tourism_expenditure",
+              "Year"
+            ]
           },
           "default": null
         },
@@ -134,7 +182,15 @@
           "type": "quantitative",
           "scale": {
             "type": "linear",
-            "domain": [0, 500, 1000, 5000, 10000, 45000, 49000]
+            "domain": [
+              0,
+              500,
+              1000,
+              5000,
+              10000,
+              45000,
+              49000
+            ]
           },
           "legend": {
             "title": "Tourist Arrivals (thousands)",
@@ -143,10 +199,10 @@
             "columns": 6,
             "labelLimit": 400,
             "symbolSize": 300,
-            "titleFont": "Serif", 
-            "titleFontSize": 14,   
-            "labelFont": "Serif", 
-            "labelFontSize": 12   
+            "titleFont": "Outfit",
+            "titleFontSize": 14,
+            "labelFont": "Outfit",
+            "labelFontSize": 12
           }
         },
         "tooltip": [

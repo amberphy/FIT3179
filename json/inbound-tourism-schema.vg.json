@@ -1,6 +1,7 @@
 {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
     "title": "Inbound Tourism Expenditure by Products (2000-2022)",
+    "background": "#eaeaea",
     "data": {
       "url": "https://raw.githubusercontent.com/amberphy/FIT3179/refs/heads/main/datasets/inbound-tourism-expenditure-of-visitors-by-products.csv"
     },

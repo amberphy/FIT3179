@@ -1,5 +1,6 @@
 {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "background": "#eaeaea",
     "data": {
       "url":"https://raw.githubusercontent.com/amberphy/FIT3179/refs/heads/main/datasets/PurposeOfVisits.csv"
     },

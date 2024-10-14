@@ -5,24 +5,78 @@ body * {
 h1 {
     font-weight: 900;
     font-family: "Orbitron", sans-serif;
+    padding: 30px;
+    padding-bottom: 0px;
+    margin-top: 50px; 
+    margin-bottom: 50px; 
 }
 
 body {
-    background-color: lightgray;
+    background-color: #eaeaea;
 }
 
 .page {
-    width: 1000px;
-    background-color: white;
+    width: 93%;
+    max-width: 2000px;
+    background-color: #eaeaea;
     margin: auto;
     padding: 50px;
     padding-top: 35px;
 }
+.vega-embed {
+    position: relative;
+    display: inline-block;
+    box-sizing: border-box;
+    margin: 0 auto; 
+}
 
+.vega-bind {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px; /* Adds spacing between each button-label pair */
+    justify-content: center;
+}
+  
+.vega-bind label {
+margin-left: 15px; /* Adds space between the radio button and its label */
+}
+
+.vega-bind input {
+margin-right: 5px; /* Adds space between buttons */
+}
+
+.vega-bindings {
+    display: flex;
+    flex-direction: column;  /* Arrange the controls vertically */
+    gap: 10px;  /* Adds vertical spacing between controls */
+}
+  
 .vis-container {
     width: 100%;
     margin-bottom: 20px;
+    text-align: center;
 }
+
+.top-panel, .bottom-panel {
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(10px);
+    height: 60px;
+    width: 100%;
+    position: fixed;
+    left: 0;
+    z-index: 999;
+}
+
+.top-panel {
+    top: 0;
+    mask-image: linear-gradient(to bottom, rgba(0,0,0,1), rgba(0,0,0,0)); /* Fade out effect at bottom */
+}
+
+.bottom-panel {
+    bottom: 0;
+    mask-image: linear-gradient(to top, rgba(0,0,0,1), rgba(0,0,0,0)); /* Fade out effect at top */
+}
+
 
 .description h2, h1 {
     margin-top: 0px;

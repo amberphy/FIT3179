@@ -7,6 +7,7 @@
       "color": "independent"
     }
   },
+  "background": "#eaeaea",
   "data": {
       "url": "https://raw.githubusercontent.com/amberphy/FIT3179/refs/heads/main/datasets/hotel_guests_by_states.csv"
     }, 
@@ -48,7 +49,11 @@
       }
     ],
     "projection": {"type": "equalEarth"},
-    "mark": "geoshape",
+    "mark":{
+      "type": "geoshape",
+      "stroke": "white",
+      "strokeWidth": 0.8
+    },
     "encoding": {
       "shape": {
         "field": "geo",
@@ -56,7 +61,8 @@
       },
       "color": {
         "field": {"repeat": "row"},
-        "type": "quantitative"
+        "type": "quantitative",
+        "scale": {"scheme": "lightorange"}
       },
       "tooltip": [
         {
@@ -67,7 +73,8 @@
         {
           "field": {"repeat": "row"},
           "type": "quantitative",
-          "title": ["Tourists"]
+          "title": ["Hotel Guests"],
+          "format": ","
         }
       ]
     }

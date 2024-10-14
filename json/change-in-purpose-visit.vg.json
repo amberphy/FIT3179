@@ -1,6 +1,7 @@
 {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
     "description": "A horizontal bar chart comparing the purpose of visits for the years 2019 and 2021.",
+    "background": "#eaeaea",
     "data": {
       "url": "https://raw.githubusercontent.com/amberphy/FIT3179/refs/heads/main/datasets/ChangeInPurposeOfVisits.csv"
     },
