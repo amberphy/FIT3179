@@ -1,47 +1,139 @@
 {
-    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-    "title": "Inbound Tourism Expenditure by Products (2000-2022)",
-    "background": "#eaeaea",
-    "data": {
-      "url": "https://raw.githubusercontent.com/amberphy/FIT3179/refs/heads/main/datasets/inbound-tourism-expenditure-of-visitors-by-products.csv"
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "Inbound Tourism Expenditure by Products (2000-2022)",
+    "font": "Orbitron",
+    "fontSize": 18,
+    "fontWeight": "bold",
+    "offset": 20
+  },
+  "background": "#eaeaea",
+  "data": {
+    "url": "https://raw.githubusercontent.com/amberphy/FIT3179/refs/heads/main/datasets/inbound-tourism-expenditure-of-visitors-by-products.csv"
+  },
+  "transform": [
+    {"filter": "datum['Value in RM Million'] != '-'"},
+    {"calculate": "toNumber(datum['Value in RM Million'])", "as": "Expenditure"}
+  ],
+  "vconcat": [
+    {
+      "width": "container",
+      "height": 400,
+      "encoding": {
+        "x": {
+          "field": "Year",
+          "type": "temporal",
+          "scale": {"domain": {"param": "brush"}},
+          "axis": {
+            "title": "",
+            "grid": true,
+            "labelFont": "Outfit",
+            "labelFontSize": 12,
+            "labelAngle": 0,
+            "labelPadding": 10,
+            "titlePadding": 20
+          }
+        },
+        "y": {
+          "aggregate": "sum",
+          "field": "Expenditure",
+          "type": "quantitative",
+          "axis": {
+            "title": "Expenditure (RM Million)",
+            "labelFont": "Outfit",
+            "labelFontSize": 12,
+            "labelAngle": 0,
+            "titleFont": "Outfit",
+            "titleFontSize": 12,
+            "labelPadding": 10,
+            "titlePadding": 20
+          }
+        },
+        "color": {
+          "field": "Products",
+          "type": "nominal",
+          "title": "Product Types",
+          "legend": {
+            "title": "Products",
+            "symbolSize": 200,
+            "titleFont": "Outfit",
+            "titleFontSize": 14,
+            "labelFont": "Outfit",
+            "labelFontSize": 12,
+            "labelLimit": 0
+          }
+        },
+        "tooltip": [
+          {"field": "Products", "type": "nominal"},
+          {"field": "Year", "type": "temporal"},
+          {
+            "field": "Expenditure",
+            "type": "quantitative",
+            "title": "Expenditure (RM Million)"
+          }
+        ]
+      },
+      "mark": {"type": "area", "interpolate": "monotone", "opacity": 0.7}
     },
-    "transform": [
-      {"filter": "datum['Value in RM Million'] != '-'"},
-      {
-        "calculate": "toNumber(datum['Value in RM Million'])",
-        "as": "Expenditure"
-      }
-    ],
-    "width": "container",
-    "height": 400,
-    "encoding": {
-      "x": {
-        "field": "Year",
-        "type": "temporal",
-        "axis": {"title": "Year", "grid": false}
+    { "width": "container",
+      "height": 100,
+      "params": [
+        {"name": "brush", "select": {"type": "interval",
+        "encodings": ["x"]}}
+      ],
+      "encoding": {
+        "x": {
+          "field": "Year",
+          "type": "temporal",
+          "axis": {
+            "title": "Year",
+            "grid": true,
+            "labelFont": "Outfit",
+            "labelFontSize": 12,
+            "labelAngle": 0,
+            "titleFont": "Outfit",
+            "titleFontSize": 12,
+            "labelPadding": 10,
+            "titlePadding": 20
+          }
+        },
+        "y": {
+          "aggregate": "sum",
+          "field": "Expenditure",
+          "type": "quantitative",
+          "axis": {
+            "tickCount": 3,
+            "grid": true,
+            "title": "Expenditure (RM Million)",
+            "labelFont": "Outfit",
+            "labelFontSize": 12,
+            "labelAngle": 0,
+            "titleFont": "Outfit",
+            "titleFontSize": 12,
+            "labelPadding": 10,
+            "titlePadding": 20
+          }
+        },
+        "color": {
+          "field": "Products",
+          "type": "nominal",
+          "title": "Product Types",
+          "legend": {
+            "title": "Products",
+            "symbolSize": 200,
+            "titleFont": "Outfit",
+            "titleFontSize": 14,
+            "labelFont": "Outfit",
+            "labelFontSize": 12,
+            "labelLimit": 0
+          }
+        }
       },
-      "y": {
-        "aggregate": "sum",
-        "field": "Expenditure",
-        "type": "quantitative",
-        "axis": {"title": "Expenditure (RM Million)"}
-      },
-      "color": {
-        "field": "Products",
-        "type": "nominal",
-        "title": "Product Types",
-        "legend": {"title": "Products"}
-      },
-      "tooltip": [
-        {"field": "Products", "type": "nominal"},
-        {"field": "Year", "type": "temporal"},
-        {"field": "Expenditure", "type": "quantitative", "title": "Expenditure (RM Million)"}
-      ]
-    },
-    "mark": {"type": "area", "interpolate": "monotone", "opacity": 0.7},
-    "config": {
-      "view": {"stroke": "transparent"},
-      "axis": {"labelFontSize": 12, "titleFontSize": 14}
+      "mark": {"type": "area", "interpolate": "monotone", "opacity": 0.7}
     }
+  ],
+  "config": {
+    "view": {"stroke": "transparent"},
+    "axis": {"labelFontSize": 12, "titleFontSize": 14}
   }
-  
+}

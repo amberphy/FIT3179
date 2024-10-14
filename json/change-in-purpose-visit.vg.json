@@ -1,13 +1,23 @@
 {
-    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-    "description": "A horizontal bar chart comparing the purpose of visits for the years 2019 and 2021.",
-    "background": "#eaeaea",
-    "data": {
-      "url": "https://raw.githubusercontent.com/amberphy/FIT3179/refs/heads/main/datasets/ChangeInPurposeOfVisits.csv"
-    },
-    "hconcat": [
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "A horizontal bar chart comparing the purpose of visits for the years 2019 and 2021.",
+  "background": "#eaeaea",
+  "data": {
+    "url": "https://raw.githubusercontent.com/amberphy/FIT3179/refs/heads/main/datasets/ChangeInPurposeOfVisits.csv"
+  },
+  "vconcat": [
+    {
+      "title": {
+        "text": "Change from 2019 to 2021",
+        "font": "Orbitron",
+        "fontSize": 14,
+        "fontWeight": "bold",
+        "offset": 10
+      },
+      "width": 400,
+      "height": 160,
+      "layer": [
       {
-        "title": "Change from 2021 to 2022",
         "params": [
           {
             "name": "hover",
@@ -22,50 +32,96 @@
         ],
         "encoding": {
           "x": {
+            "title": "Purpose of Visit",
             "field": "Emoji",
             "type": "nominal",
             "axis": {
               "domain": false,
               "ticks": false,
               "labelAngle": 0,
-              "labelPadding": 4
+              "labelPadding": 4,
+              "labelFont": "Outfit",
+              "labelFontSize": 12
+            }
+          },
+          "opacity": {
+            "condition": {
+              "param": "hover",
+              "empty": false,
+              "value": 0.9
+            },
+            "value": 0.5
+          },
+          "detail":{ "field": "Visitors", "type": "quantitative"},
+         
+          "tooltip":[
+            {"field": "Purpose", "type": "nominal", "title": "Purpose of Visit"},
+            {"field": "Visitors", "type": "quantitative", "title": "Change (%)", "format": ".2f"}
+  
+          ]
+        }
+      },
+      {
+        "mark": {"type": "bar"},
+        "transform": [
+          {
+            "filter": "datum.Year == '2022/2021'"
+          }
+        ],
+        "encoding": {
+          "x": {
+            "title": "Purpose of Visit",
+            "field": "Emoji",
+            "type": "nominal",
+            "axis": {
+              "domain": false,
+              "ticks": false,
+              "labelAngle": 0,
+              "labelPadding": 4,
+              "labelFont": "Outfit",
+              "labelFontSize": 12
             }
           },
           "y": {
+            "title": "Change (%)",
             "field": "Visitors",
             "type": "quantitative",
             "axis": {
               "gridColor": {
                 "condition": {"test": "datum.value === 0", "value": "black"},
                 "value": "#ddd"
-              }
+              },
+              "labelFont": "Outfit",
+              "labelFontSize": 12
             }
           },
           "color": {
-            "condition": {
-              "test": "datum.Visitors > 0",
-              "value": "green"
-            },
-            "value": "red"
-          },
-          "opacity": {
-            "condition": {
-              "param": "hover",
-              "value": 0.8
-            },
-            "value": 0.5
+            "field": "Emoji",
+            "scale": {"scheme": "set2"}
           }
         }
+      }
+    ]
+    },
+    {
+      "title": {
+        "text": "Change from 2019 to 2022",
+        "font": "Orbitron",
+        "fontSize": 14,
+        "fontWeight": "bold",
+        "offset": 10
       },
+      "width": 400,
+      "height": 160,
+      "layer": [
       {
-        "title": "Change from 2019 to 2022",
         "params": [
           {
             "name": "hover",
             "select": {"type": "point", "on": "pointerover", "clear": "pointerout"}
           }
         ],
-        "mark": {"type": "bar", "tooltip": true},
+        "mark": {"type": "bar", "color": "#eee","tooltip": true},
         "transform": [
           {
             "filter": "datum.Year == '2022/2019'"
@@ -73,41 +129,78 @@
         ],
         "encoding": {
           "x": {
+            "title": "Purpose of Visit",
             "field": "Emoji",
             "type": "nominal",
             "axis": {
               "domain": false,
               "ticks": false,
               "labelAngle": 0,
-              "labelPadding": 4
+              "labelPadding": 4,
+              "labelFont": "Outfit",
+              "labelFontSize": 12
+            }
+          },
+          "opacity": {
+            "condition": {
+              "param": "hover",
+              "empty": false,
+              "value": 0.9
+            },
+            "value": 0.5
+          },
+          "detail":{ "field": "Visitors", "type": "quantitative"},
+         
+          "tooltip":[
+            {"field": "Purpose", "type": "nominal", "title": "Purpose of Visit"},
+            {"field": "Visitors", "type": "quantitative", "title": "Change (%)", "format": ".2f"}
+  
+          ]
+        }
+      },
+      {
+        "mark": {"type": "bar"},
+        "transform": [
+          {
+            "filter": "datum.Year == '2022/2019'"
+          }
+        ],
+        "encoding": {
+          "x": {
+            "title": "Purpose of Visit",
+            "field": "Emoji",
+            "type": "nominal",
+            "axis": {
+              "domain": false,
+              "ticks": false,
+              "labelAngle": 0,
+              "labelPadding": 4,
+              "labelFont": "Outfit",
+              "labelFontSize": 12
             }
           },
           "y": {
+            "title": "Change (%)",
             "field": "Visitors",
             "type": "quantitative",
             "axis": {
               "gridColor": {
                 "condition": {"test": "datum.value === 0", "value": "black"},
                 "value": "#ddd"
-              }
+              },
+              "labelFont": "Outfit",
+              "labelFontSize": 12
             }
           },
           "color": {
-            "condition": {
-              "test": "datum.Visitors > 0",
-              "value": "green"
-            },
-            "value": "red"
-          },
-          "opacity": {
-            "condition": {
-              "param": "hover",
-              "value": 0.8
-            },
-            "value": 0.5
+            "field": "Emoji",
+            "scale": {"scheme": "set2"},
+            "legend": null
+
           }
         }
       }
     ]
-  }
-  
+    }
+  ]
+}

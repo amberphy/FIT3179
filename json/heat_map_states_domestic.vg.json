@@ -4,11 +4,16 @@
     "data": {
         "url": "https://raw.githubusercontent.com/amberphy/FIT3179/refs/heads/main/datasets/states_visited.csv"
     },
-    "title": "Number of Domestic Tourists By State Visted 2022",
+    "title":  {"text": "Number of Domestic Tourists By State Visted 2022",
+        "font": "Orbitron",
+        "fontSize": 18,
+        "fontWeight": "bold",
+        "offset": 20
+        },
     "config": {
         "view": {
             "strokeWidth": 0,
-            "step": 15
+            "step": 35
         },
         "axis": {
             "domain": false
@@ -21,21 +26,51 @@
             "type": "nominal",
             "title": "State Visited",
             "axis": {
-                "labelAngle": -40
+                "labelAngle": -40,
+                "labelFont": "Outfit",
+                "labelFontSize": 12,
+                "titleFont": "Outfit",
+                "titleFontSize": 12
             }
         },
         "y": {
             "field": "state_of_origin",
             "type": "nominal",
-            "title": "State of Origin"
+            "title": "State of Origin",
+            "axis": {"title": "Tourist Arrivals",
+                "labelFont": "Outfit",
+                "labelFontSize": 12,
+                "titleFont": "Outfit",
+                "titleFontSize": 12
+            }
         },
         "color": {
             "field": "number_of_tourists",
             "aggregate": "max",
             "type": "quantitative",
             "legend": {
-                "title": "Number of Tourist"
+                "title": "Number of Tourist",
+                "symbolSize": 100,
+                "titleFont": "Outfit",
+                "titleFontSize": 14,
+                "labelFont": "Outfit",
+                "labelFontSize": 12
+            },
+            "scale": {
+            "type": "linear",
+            "domain": [
+              0,
+              10,
+              500,
+              1000,
+              3000
+            ]
             }
-        }
+        },
+        "tooltip": [
+            {"field": "state_of_origin", "type": "nominal",  "title":"State of Origin"},
+            {"field": "state_visited", "type": "nominal", "title":"State Visted"},
+            {"field": "number_of_tourists", "type": "quantitative", "format": ",", "title":"Tourist visits (thousands)"}
+        ]
     }
   }

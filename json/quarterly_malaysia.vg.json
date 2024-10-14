@@ -1,8 +1,13 @@
 {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-    "width": 370,
-    "height": 100,
-    "title": "Tourist Arrivals to Malaysia across Region, Year, and Quarter",
+    "width": 500,
+    "height": 400,
+    "title": {"text": "Tourist Arrivals to Malaysia across Region, Year, and Quarter",
+      "font": "Orbitron",
+      "fontSize": 18,
+      "fontWeight": "bold",
+      "offset": 20
+    },
     "background": "#eaeaea",
     "data": {
       "url": "https://raw.githubusercontent.com/amberphy/FIT3179/refs/heads/main/datasets/quarterly_arrivals_malaysia_data.csv"
@@ -10,21 +15,13 @@
     "params": [
       {
         "name": "Year_selection",
-        "value": 2020,
+        "value": 2019,
         "bind": {
-          "input": "select",
-          "options": [2015, 2016, 2017, 2018, 2019, 2020],
-          "labels": ["2015","2016","2017","2018","2019", "2020"],
-          "name": "Year Selection: "
-        }
-      },
-      {
-        "name": "Quarter_selection",
-        "bind": {
-          "input": "select",
-          "options": [null, "Quarter1", "Quarter2", "Quarter3", "Quarter4"],
-          "labels": ["Show All", "Q1", "Q2", "Q3", "Q4"],
-          "name": "Quarter Selection: "
+          "input": "range",
+          "min": 2015,
+          "max": 2020,
+          "step": 1,
+          "name": "Year: "
         }
       },
       {
@@ -42,13 +39,10 @@
         "filter": "Year_selection == null || datum.Year == Year_selection"
       },
       {
-        "filter": "Quarter_selection == null || datum.Quarter == Quarter_selection"
-      },
-      {
         "filter": "Region_selection == null || datum.Region == Region_selection"
       },
       {
-        "calculate": "datum.Tourist_Arrivals > 400000 ? 500000 : datum.Tourist_Arrivals",
+        "calculate": "datum.Tourist_Arrivals > 700000 ? 800000 : datum.Tourist_Arrivals",
         "as": "Adjusted_Tourist_Arrivals"
       }
     ],
@@ -56,13 +50,19 @@
       "x": {
         "field": "Quarter",
         "type": "ordinal",
-        "axis": {"title": "Quarter"}
+        "axis": {"title": "Quarter",
+          "labelFont": "Outfit",
+          "labelFontSize": 12,
+          "labelAngle": 0,
+          "titleFont": "Outfit",
+          "titleFontSize": 12}
       },
       "y": {
         "field": "Adjusted_Tourist_Arrivals",
         "type": "quantitative",
-        "axis": {"title": "Tourist Arrivals"},
-        "scale": {"domain": [0, 400000]} 
+        "axis": {"title": "Tourist Arrivals",
+        "labelFont": "Outfit",
+        "labelFontSize": 12}
       },
       "color": {
         "field": "Region",
@@ -70,6 +70,13 @@
         "scale": {
           "domain": ["ASIA", "EUROPE", "AFRICA", "AMERICAS", "OCEANIA"],
           "range": ["#377eb8", "#ff7f00", "#984ea3", "#4daf4a", "#e41a1c"]
+        },
+        "legend": {
+          "symbolSize": 100,
+          "titleFont": "Outfit",
+          "titleFontSize": 14,
+          "labelFont": "Outfit",
+          "labelFontSize": 12
         }
       }
     },
@@ -84,7 +91,7 @@
             {"field": "Region", "type": "nominal"},
             {"field": "Year", "type": "nominal"},
             {"field": "Quarter", "type": "nominal"},
-            {"field": "Tourist_Arrivals", "type": "quantitative", "format": ","}
+            {"field": "Tourist_Arrivals", "type": "quantitative", "format": ",", "title":"Tourist Arrivals (thousands)"}
           ]
         }
       }

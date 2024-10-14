@@ -5,10 +5,15 @@ body * {
 h1 {
     font-weight: 900;
     font-family: "Orbitron", sans-serif;
+    color: rgb(19, 104, 174);
     padding: 30px;
-    padding-bottom: 0px;
+    padding-left: 0px;
+    padding-bottom: 15px;
     margin-top: 50px; 
     margin-bottom: 50px; 
+    margin-left: 10px;
+    border-bottom: 5px solid rgb(19, 104, 174);
+
 }
 
 body {
@@ -17,7 +22,7 @@ body {
 
 .page {
     width: 93%;
-    max-width: 2000px;
+    max-width: 1240px;
     background-color: #eaeaea;
     margin: auto;
     padding: 50px;
@@ -58,9 +63,9 @@ margin-right: 5px; /* Adds space between buttons */
 }
 
 .top-panel, .bottom-panel {
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 70, 135, 0.5);
     backdrop-filter: blur(10px);
-    height: 60px;
+    height: 30px;
     width: 100%;
     position: fixed;
     left: 0;
@@ -97,4 +102,11 @@ margin-right: 5px; /* Adds space between buttons */
 .small-font {
     font-size: 14px;
 }
+
+.credits-section {
+    border-top: 5px solid rgb(19, 104, 174); /* Adjust the color and thickness of the border */
+    padding: 20px; /* Optional: Adds some padding to the inside of the credits section */
+    margin-top: 50px; /* Optional: Adds space above the credits */
+}
+
 

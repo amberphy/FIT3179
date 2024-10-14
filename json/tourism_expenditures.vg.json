@@ -7,7 +7,7 @@
     "fontWeight": "bold",
     "offset": 20
   },
-  "width": 1080,
+  "width": 1000,
   "height": 550,
   "projection": {
     "type": "naturalEarth1",
@@ -29,10 +29,10 @@
   "params": [
     {
       "name": "zoom_level",
-      "value": 190,
+      "value": 170,
       "bind": {
         "input": "range",
-        "min": 190,
+        "min": 170,
         "max": 500,
         "step": 10,
         "name": "Zoom: "

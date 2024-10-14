@@ -1,7 +1,18 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "title": "Domestic Tourists and Foreigners By States",
-  "repeat": {"row": ["DOMESTIC", "FOREIGNER"]},
+  "title": {
+    "text": "Hotel Guests Arrivals in Malaysia by States",
+    "font": "Orbitron",
+    "fontSize": 18,
+    "fontWeight": "bold",
+    "offset": 20
+  },
+  "repeat": {
+    "column": [
+      "DOMESTIC",
+      "FOREIGNER"
+    ]
+  },
   "resolve": {
     "scale": {
       "color": "independent"
@@ -9,26 +20,34 @@
   },
   "background": "#eaeaea",
   "data": {
-      "url": "https://raw.githubusercontent.com/amberphy/FIT3179/refs/heads/main/datasets/hotel_guests_by_states.csv"
-    }, 
+    "url": "https://raw.githubusercontent.com/amberphy/FIT3179/refs/heads/main/datasets/hotel_guests_by_states.csv"
+  },
   "params": [
     {
       "name": "Year",
       "value": 2022,
       "bind": {
-        "input": "select",
-        "options": [2019, 2021, 2022],
-        "labels": ["2019","2021","2022"],
+        "input": "radio",
+        "options": [
+          2019,
+          2021,
+          2022
+        ],
+        "labels": [
+          "2019",
+          "2021",
+          "2022"
+        ],
         "name": "Year Selection: "
       }
     }
   ],
   "spec": {
-    "width": 500,
+    "width": 600,
     "height": 300,
     "data": {
       "url": "https://raw.githubusercontent.com/amberphy/FIT3179/refs/heads/main/datasets/hotel_guests_by_states.csv"
-    }, 
+    },
     "transform": [
       {
         "filter": "datum.Year == Year"
@@ -48,8 +67,10 @@
         "as": "geo"
       }
     ],
-    "projection": {"type": "equalEarth"},
-    "mark":{
+    "projection": {
+      "type": "equalEarth"
+    },
+    "mark": {
       "type": "geoshape",
       "stroke": "white",
       "strokeWidth": 0.8
@@ -60,9 +81,24 @@
         "type": "geojson"
       },
       "color": {
-        "field": {"repeat": "row"},
+        "field": {
+          "repeat": "column"
+        },
         "type": "quantitative",
-        "scale": {"scheme": "lightorange"}
+        "scale": {
+          "scheme": "lightorange"
+        },
+        "legend": {
+          "orient": "bottom",
+          "direction": "horizontal",
+          "columns": 6,
+          "labelLimit": 400,
+          "symbolSize": 300,
+          "titleFont": "Outfit",
+          "titleFontSize": 14,
+          "labelFont": "Outfit",
+          "labelFontSize": 12
+        }
       },
       "tooltip": [
         {
@@ -71,9 +107,13 @@
           "title": "State"
         },
         {
-          "field": {"repeat": "row"},
+          "field": {
+            "repeat": "column"
+          },
           "type": "quantitative",
-          "title": ["Hotel Guests"],
+          "title": [
+            "Hotel Guests"
+          ],
           "format": ","
         }
       ]
