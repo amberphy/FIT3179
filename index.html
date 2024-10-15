@@ -15,9 +15,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Google font -->
-    <!-- <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet"> -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap" rel="stylesheet">
@@ -37,18 +34,31 @@
         
     <div class="page">
         <!-- Title -->
-        <h1>Global Tourism and Arrivals to Malaysia Visualisation</h1>
+         <div class="title-section">
+            <h1>
+                <img src="./images/tourism_symbol.png" alt="Malaysia Tourism" class="title-image" style="width: 50px; height: auto; margin-bottom: 15px; float: left; margin-right: 10px;">
+                From World Wonders to Malaysian Marvels: A Journey Through Global Tourism and Malaysia's Unique Appeal
+            </h1>
+
+         </div>
 
         <!-- Vis1 -->
         <div id="vis1" class="vis-container"></div>
 
         <!-- Textbox -->
-        <div class="pure-g">
+        <div class="textbox">
             <div class="pure-u-1-1">
-                <p>The number of tourists/visitors arriving at each country/region including their expenditures.</p>
+                <p>The global tourist arrivals in 2021 highlighted notable trends and insights. Key destinations, such as the USA, France, and Indonesia, showcase significant recovery in tourism post-pandemic. The USA welcomed 22.1 million international visitors, driven by popular attractions in New York and California. France stood out with 48.4 million arrivals, reflecting a strong rebound thanks to its rich cultural heritage and iconic landmarks.
+
+                    The visualization emphasizes a regional contrast, where Southeast Asian countries like Indonesia also experienced notable tourist interest, attracting 1.5 million visitors. However, Malaysia, despite its appeal, received only 135,000 tourists. This disparity points to a growing trend where travelers increasingly favored well-established destinations with robust recovery strategies.</p>
             </div>
         </div>
-
+        <hr class="section-divider">
+            <h2>
+                <img src="./images/cuti-cuti.png" alt="Malaysia Tourism" class="title-image" style="width: 55px; height: auto; margin-bottom: 15px; float: left; margin-right: 10px;">
+                Malaysia Tourism: A Closer Look
+            </h2>
+         <hr class="section-divider">
         <!-- Vis2 + Textbox (right) -->
         <div class="pure-g">
             <div class="pure-u-2-3">
@@ -56,18 +66,27 @@
             </div>
         </div>
           
-        <div class="pure-g">
+        <div class="textbox">
             <div class="pure-u-1-1">
-                <p>The number of tourists/visitors arriving at each country/region including their expenditures.</p>
+                <p>On the left, we see a strong domestic tourism trend, with Pahang emerging as the top destination for local visitors. The popularity of touristy spots like Genting Highlands and Cameron Highlands is likely contributing to this surge, particularly for budget-friendly vacations.
+
+                    On the right, foreign tourism data reveals that Kuala Lumpur reclaimed its status as the most visited city by international travelers, attracting 4 million foreign guests in 2022. Additionally, Johor has gained prominence among foreigners due to its proximity to Singapore, making it a convenient destination for international tourists.</p>
             </div>
         </div>
+
+        <hr class="section-divider">
 
         <!-- Vis3 + Textbox (left) -->
         <div class="pure-g">
             <div class="pure-u-1-3">
                 <div class="description description-left">
-                    <h3>Quarterly Tourist Arrivals to Malaysia</h3>
-                    <p>Tourist arrivals to Malaysia show strong seasonal variations...</p>
+                    <h3>How does the seasons of the year affect tourism in Malaysia?</h3>
+                    <p>Asia consistently brings the highest number of tourists, hovering around 600,000 to 650,000 arrivals per quarter, with a slight increase in Quarter 4. 
+                        <br><br>European tourists show a peak in Quarter 1, with nearly 350,000 arrivals, but numbers drop notably in the following quarters, leveling out around 250,000.
+
+                        This is potentially due to the colder European winters, making Malaysia's tropical climate a desirable escape. 
+                        <br><br> In 2016, Malaysia experienced a surge in tourists due to its promotion of "Malaysia Truly Asia" campaigns, which positioned the country as a hub for diverse cultural and natural experiences, attracting tourists from across the globe. The stable growth from Asia, Malaysia’s neighboring region, highlights strong intra-regional tourism, driven by cultural, business, and historical ties.</p>
+                        
                 </div>
             </div>
             <div class="pure-u-2-3">
@@ -75,14 +94,16 @@
             </div>
         </div>
 
+        <hr class="section-divider">
+
         <!-- Vis4-->
         <div class="pure-g">
             <div class="pure-u-1-1">
-                <div id="vis4" class="vis-container"></div>            </div>
+                <div id="vis4" class="vis-container"></div>            
+            </div>
         </div>
-        <div id="vis4" class="vis-container"></div>
+        <hr class="section-divider">
 
-        
         <!-- Vis7 + Textbox (right) -->
         <div class="pure-g">
             <div class="pure-u-2-3">
@@ -90,17 +111,21 @@
             </div>
             <div class="pure-u-1-3">
                 <div class="description description-right">
-                    <h2>Tourism and Expenditure Insights</h2>
-                    <p>Tourism data shows a steady increase in...
-                        From 2000 until 2019, there is a general upward trend in overall spending, with a noticeable increase in 2010, peaking around 2018. Accommodation services consistently represent the largest share of expenditure, indicated by the dominant blue region. Country-specific tourism characteristic goods (orange) and passenger transport services (green) are also significant contributors. Cultural, sports, and recreational services (pink) and travel agencies' services (purple) account for smaller shares.
+                    <h3>What kind of Products are Malaysia popular for?</h3>
+                    <p>From 2000 until 2019, there is a general upward trend in overall spending, 
+                        with a noticeable increase in 2010, peaking around 2018. 
+                        
+                    Post-2019, there is a dramatic decline in tourism expenditure across all categories.
+                    By 2022, there is a slight recovery visible, although it has not reached pre-pandemic levels.
 
-Post-2019, there is a dramatic decline in tourism expenditure across all categories, reflecting the impact of the COVID-19 pandemic. By 2022, there is a slight recovery visible, although it has not reached pre-pandemic levels.
-
-Interestingly, accommodation and country-specific tourism characteristic goods are consistently the most significant sectors, showing how much of Malaysia's inbound tourism revenue depends on these services. The graph also highlights how the pandemic hit tourism-related sectors in an unprecedented manner.
+                    <br><br>Interestingly, accommodation and country-specific tourism characteristic goods are consistently the most significant sectors, showing how much of Malaysia's inbound tourism revenue depends on these services. 
                     </p>
                 </div>
             </div>
         </div>
+
+        <hr class="section-divider">
+
         <!-- Vis5 + vis6 -->
         <div class="pure-g">
             <div class="pure-u-1-2">
@@ -112,31 +137,45 @@ Interestingly, accommodation and country-specific tourism characteristic goods a
         </div>
 
         <!-- Textbox -->
-        <div class="pure-g">
-            <div class="pure-u-1-1">
-                <p>Inbound tourism expenditure in Malaysia has grown significantly...</p>
-            </div>
+   
+        <div class="textbox">
+            <p>As we can see from the stacked bar chart on the left, shopping and visiting friends/relatives dominated the purpose of visit in 2019. By 2021, holiday/leisure overtook other categories, reflecting a shift in domestic tourism trends. Visiting friends/relatives saw a significant drop, potentially due to travel restrictions and health concerns in 2021.
+
+                The percentage change graphs further highlight these shifts. From 2019 to 2021, there was a 9.5% increase in visiting friends/relatives and a steep 6.5% decline in shopping. By 2022, holiday/leisure saw a 7.4% rise, while visiting friends/relatives dropped by 8.6%, indicating that leisure travel became more prioritized post-pandemic as restrictions eased.
+                
+                A notable insight is the growing trend in holiday/leisure travel. This reflects broader regional trends, where domestic tourism became a vital economic booster post-COVID-19, compensating for lower international tourism. The rise of local tourism activities such as staycations, short getaways, and cultural visits in nearby states became a popular alternative for Malaysians seeking recreation closer to home.</p>
         </div>
 
+
+        <hr class="section-divider">
 
         <!-- Vis8 -->
         <div id="vis8" class="vis-container"></div>
 
         <!-- Textbox -->
-        <div class="pure-g">
-            <div class="pure-u-1-1">
-                <p>Regional tourism arrivals show...</p>
-            </div>
+
+        <div class="textbox">
+            <p>Pulau Pinang, Selangor, and Sabah shows higher numbers of domestic tourists, while states like Perlis and Labuan appear less popular. This pattern reflects the diverse appeal of these regions; 
+                Pulau Pinang is known for its rich cultural heritage and food scene, while Sabah offers natural attractions such as Mount Kinabalu and stunning islands. 
+                Selangor, being a major commercial hub, also attracts substantial numbers.
+
+                Interestingly, Johor and Kuala Lumpur attract moderate numbers, possibly due to their proximity to Singapore, which encourages cross-border travel. 
+                <br><br>Tourism to Melaka and Pahang indicates a preference for historical sites and nature destinations within Malaysia.
+                
+                A noticeable factor shaping domestic tourism patterns in Malaysia is the availability of diverse experiences—urban, cultural, and natural—which are crucial for different segments of tourists. Post-pandemic, domestic tourism gained momentum as travel restrictions curtailed international options, pushing Malaysians to explore local destinations. According to Tourism Malaysia, this internal shift helped maintain the country's tourism revenue, with states investing in promotions and infrastructure to appeal to local travelers.</p>
         </div>
+
 
         <!-- Credits -->
         <div class="pure-g small-font credits-section">
             <div class="pure-u-1-1">
                 <p>This visualization is created by 
-                    <a href="https://github.com/amberphy/FIT3179/tree/main" target="_blank">Amber Pang Hsuan Yueh</a>. 
-                    The datasource is 
-                    <a href="https://data.un.org/" target="_blank">UN data</a> and 
-                    <a href="https://archive.data.gov.my/data/dataset/tourist-arrivals-into-malaysia-by-quarterly-regional/resource/13dc1cf0-310e-4b7f-a084-b26e58fbbf86?inner_span=True" target="_blank">Data Gov MY</a>.
+                    <a href="https://github.com/amberphy/FIT3179/tree/main" target="_blank">Amber Pang Hsuan Yueh</a>. <br>
+                    <br>The datasource includes:
+                    <br>
+                    <a href="https://data.un.org/" target="_blank">UN data</a>, <br>
+                    <a href="https://archive.data.gov.my/data/dataset/tourist-arrivals-into-malaysia-by-quarterly-regional/resource/13dc1cf0-310e-4b7f-a084-b26e58fbbf86?inner_span=True" target="_blank">Data Gov MY</a>, <br>
+                    and <br><a href="https://www.malaysia.travel/storage/files/pdf/Malaysia_Tourism_KeyPerformance_Indicators_2022.pdf target=" target="_blank">Malaysia Tourism Key Performance Indicator</a>.
                 </p>
             </div>
         </div>

@@ -4,7 +4,7 @@
     "data": {
         "url": "https://raw.githubusercontent.com/amberphy/FIT3179/refs/heads/main/datasets/states_visited.csv"
     },
-    "title":  {"text": "Number of Domestic Tourists By State Visted 2022",
+    "title":  {"text": "Number of Domestic Tourists Visiting Other States in 2022",
         "font": "Orbitron",
         "fontSize": 18,
         "fontWeight": "bold",

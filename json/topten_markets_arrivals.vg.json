@@ -1,6 +1,6 @@
 {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-    "title": {"text": "TOP TEN MARKETS ARRIVALS", 
+    "title": {"text": "Top Ten Tourist Arrivals and Market Shares in Malaysia", 
       "font": "Orbitron",
       "fontSize": 18,
       "fontWeight": "bold",
@@ -113,10 +113,9 @@
       {
         "description": "Pie Chart with percentage_tooltip and arrow annotations",
         "title": {
-          "text": "Market Shares in Malaysia",
+          "text": "Market Percentage from Top Ten Countries",
           "font": "Orbitron",
-          "fontSize": 18,
-          "fontWeight": "bold",
+          "fontSize": 17,
           "offset": 20
         },
         "data": {

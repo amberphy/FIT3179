@@ -2,17 +2,39 @@ body * {
     font-family: 'Outfit', sans-serif;
 }
 
-h1 {
+h2{
+    font-size: 15;
     font-weight: 900;
     font-family: "Orbitron", sans-serif;
     color: rgb(19, 104, 174);
-    padding: 30px;
-    padding-left: 0px;
+    margin-left: 0px;
+    margin: 0px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+h1{
+    font-size: 15;
+    font-weight: 900;
+    font-family: "Orbitron", sans-serif;
+    color: rgb(19, 104, 174);
+    padding: 40px;
+    padding-top: 20px;
+    padding-left: 10px;
     padding-bottom: 15px;
     margin-top: 50px; 
-    margin-bottom: 50px; 
-    margin-left: 10px;
-    border-bottom: 5px solid rgb(19, 104, 174);
+    margin-bottom: 30px; 
+    margin-left: 0px;
+    border-top: 8px solid rgb(19, 104, 174);
+    border-bottom: 8px solid rgb(19, 104, 174);
+
+}
+
+.textbox {
+    font-weight: 200;
+    line-height: 1.6;
+    margin-top: 10px;
+    margin-bottom: 20px;
 
 }
 
@@ -38,27 +60,28 @@ body {
 .vega-bind {
     display: flex;
     flex-wrap: wrap;
-    gap: 20px; /* Adds spacing between each button-label pair */
+    gap: 20px; 
     justify-content: center;
 }
   
 .vega-bind label {
-margin-left: 15px; /* Adds space between the radio button and its label */
+margin-left: 15px; 
 }
 
 .vega-bind input {
-margin-right: 5px; /* Adds space between buttons */
+margin-right: 5px; 
 }
 
 .vega-bindings {
     display: flex;
-    flex-direction: column;  /* Arrange the controls vertically */
-    gap: 10px;  /* Adds vertical spacing between controls */
+    flex-direction: column;  
+    gap: 10px; 
 }
   
 .vis-container {
+    margin-top: 15px;
     width: 100%;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     text-align: center;
     overflow-x: visible;
 }
@@ -83,8 +106,21 @@ margin-right: 5px; /* Adds space between buttons */
     mask-image: linear-gradient(to top, rgba(0,0,0,1), rgba(0,0,0,0)); /* Fade out effect at top */
 }
 
+/* Title and Icon */
+.title-section {
+    width: 100%;
+    display: flex;
+    margin-bottom: 0px;
+    padding: 10px;
+}
 
-.description h2, h1 {
+.tourism-icon {
+    width: 50px;
+    height: 50px;
+    margin-right: 15px;
+}
+
+.description h2, h1, h3 {
     margin-top: 0px;
     text-align: left;
 
@@ -96,10 +132,17 @@ margin-right: 5px; /* Adds space between buttons */
     padding: 10px;
     z-index: 9999;
     text-align: justify;
+    font-weight: 200;
+    line-height: 1.6;
+    padding-bottom: 0px;
 }
 
 .description-left {
     padding-right: 10px;
+    font-weight: 200;
+    line-height: 1.6;
+    margin-top: 10px;
+    margin-bottom: 20px;
 }
 
 .pure-g {
@@ -111,8 +154,34 @@ margin-right: 5px; /* Adds space between buttons */
 }
 
 .credits-section {
-    border-top: 5px solid rgb(19, 104, 174); /* Adjust the color and thickness of the border */
-    padding: 20px; /* Optional: Adds some padding to the inside of the credits section */
+    border-top: 8px solid rgb(19, 104, 174); /* Adjust the color and thickness of the border */
+    padding: 40px; /* Optional: Adds some padding to the inside of the credits section */
+  
     margin-top: 50px; /* Optional: Adds space above the credits */
+    background-color: rgba(255, 255, 255, 0.8); /* Optional: Adds a background to make it stand out */
+    text-align: center; /* Center the text */
+    margin-bottom: 0px;
 }
 
+/* Section Divider */
+.section-divider {
+    border: none;
+    border-top: 8px solid rgb(19, 104, 174);
+    margin: 10px 0;
+}
+
+/* Adjustments for Mobile View */
+@media (max-width: 600px) {
+    .title-section {
+        flex-direction: column;
+    }
+
+    .tourism-icon {
+        margin-bottom: 10px;
+    }
+
+    .description-right {
+        margin-top: 100px;
+        margin-left: 0;
+    }
+}

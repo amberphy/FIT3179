@@ -1,7 +1,7 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "title": {
-    "text": "Tourist Arrivals and Expenditures in 2021",
+    "text": "Global Tourist Arrivals in the Year 2021",
     "font": "Orbitron",
     "fontSize": 18,
     "fontWeight": "bold",
