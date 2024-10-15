@@ -4,13 +4,18 @@
       "font": "Orbitron",
       "fontSize": 18,
       "fontWeight": "bold",
-      "offset": 20
+      "offset": 0
     },
     "description": "Vega-Lite version of bar chart from https://observablehq.com/@d3/learn-d3-scales.",
-    "background": "#eaeaea",
+    "background": "transparent",
     "data": {
       "url": "https://raw.githubusercontent.com/amberphy/FIT3179/refs/heads/main/datasets/MarketsArrivals.csv"
     },
+    "autosize": {
+      "type": "fit",
+      "contains": "padding"
+    },
+    "padding": {"left": 25, "right": 25, "top": 10, "bottom": 10},
     "params": [
       {
         "name": "Year",
@@ -44,7 +49,7 @@
               "labelPadding": 10,
               "titleFont": "Outfit", 
               "titleFontSize": 12,
-              "titlePadding": 20 }
+              "titlePadding": 10 }
           },
           "x": {
             "field": "Arrivals",
@@ -81,7 +86,7 @@
             "mark": {
               "type": "text",
               "align": "right",
-              "xOffset": 60,
+              "xOffset": 55,
               "aria": false,
               "font": "Outfit",
               "fontSize": 12

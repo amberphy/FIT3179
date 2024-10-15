@@ -21,11 +21,11 @@ body {
 }
 
 .page {
-    width: 93%;
+    width: 100%;
     max-width: 1240px;
     background-color: #eaeaea;
     margin: auto;
-    padding: 50px;
+    padding: 30px;
     padding-top: 35px;
 }
 .vega-embed {
@@ -60,6 +60,7 @@ margin-right: 5px; /* Adds space between buttons */
     width: 100%;
     margin-bottom: 20px;
     text-align: center;
+    overflow-x: visible;
 }
 
 .top-panel, .bottom-panel {

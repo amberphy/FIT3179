@@ -1,100 +1,193 @@
 {
-    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-    "width": 500,
-    "height": 400,
-    "title": {"text": "Tourist Arrivals to Malaysia across Region, Year, and Quarter",
-      "font": "Orbitron",
-      "fontSize": 18,
-      "fontWeight": "bold",
-      "offset": 20
-    },
-    "background": "#eaeaea",
-    "data": {
-      "url": "https://raw.githubusercontent.com/amberphy/FIT3179/refs/heads/main/datasets/quarterly_arrivals_malaysia_data.csv"
-    },
-    "params": [
-      {
-        "name": "Year_selection",
-        "value": 2019,
-        "bind": {
-          "input": "range",
-          "min": 2015,
-          "max": 2020,
-          "step": 1,
-          "name": "Year: "
-        }
-      },
-      {
-        "name": "Region_selection",
-        "bind": {
-          "input": "select",
-          "options": [null, "ASIA", "EUROPE", "AFRICA", "AMERICAS", "OCEANIA"],
-          "labels": ["Show All", "ASIA", "EUROPE", "AFRICA", "AMERICAS", "OCEANIA"],
-          "name": "Region Selection: "
-        }
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 500,
+  "height": 400,
+  "title": {
+    "text": "Quarterly Tourist Arrivals to Malaysia across Regions",
+    "font": "Orbitron",
+    "fontSize": 18,
+    "fontWeight": "bold",
+    "offset": 20
+  },
+  "background": "#eaeaea",
+  "data": {
+    "url": "https://raw.githubusercontent.com/amberphy/FIT3179/refs/heads/main/datasets/quarterly_arrivals_malaysia_data.csv"
+  },
+  "params": [
+    {
+      "name": "Year_selection",
+      "value": 2017,
+      "bind": {
+        "input": "range",
+        "min": 2015,
+        "max": 2020,
+        "step": 1,
+        "name": "Year: "
       }
-    ],
-    "transform": [
-      {
-        "filter": "Year_selection == null || datum.Year == Year_selection"
-      },
-      {
-        "filter": "Region_selection == null || datum.Region == Region_selection"
-      },
-      {
-        "calculate": "datum.Tourist_Arrivals > 700000 ? 800000 : datum.Tourist_Arrivals",
-        "as": "Adjusted_Tourist_Arrivals"
+    },
+    {
+      "name": "Region_selection",
+      "bind": {
+        "input": "select",
+        "options": [null, "ASIA", "EUROPE", "AFRICA", "AMERICAS", "OCEANIA"],
+        "labels": ["Show All", "ASIA", "EUROPE", "AFRICA", "AMERICAS", "OCEANIA"],
+        "name": "Region Selection: "
       }
-    ],
-    "encoding": {
-      "x": {
-        "field": "Quarter",
-        "type": "ordinal",
-        "axis": {"title": "Quarter",
-          "labelFont": "Outfit",
-          "labelFontSize": 12,
-          "labelAngle": 0,
-          "titleFont": "Outfit",
-          "titleFontSize": 12}
-      },
-      "y": {
-        "field": "Adjusted_Tourist_Arrivals",
-        "type": "quantitative",
-        "axis": {"title": "Tourist Arrivals",
+    }
+  ],
+  "transform": [
+    {
+      "filter": "Year_selection == null || datum.Year == Year_selection"
+    },
+    {
+      "filter": "Region_selection == null || datum.Region == Region_selection"
+    },
+    {
+      "calculate": "datum.Tourist_Arrivals > 700000 ? 800000 : datum.Tourist_Arrivals",
+      "as": "Adjusted_Tourist_Arrivals"
+    }
+  ],
+  "encoding": {
+    "x": {
+      "field": "Quarter",
+      "type": "ordinal",
+      "axis": {
+        "title": "Quarter",
         "labelFont": "Outfit",
-        "labelFontSize": 12}
-      },
-      "color": {
-        "field": "Region",
-        "type": "nominal",
-        "scale": {
-          "domain": ["ASIA", "EUROPE", "AFRICA", "AMERICAS", "OCEANIA"],
-          "range": ["#377eb8", "#ff7f00", "#984ea3", "#4daf4a", "#e41a1c"]
-        },
-        "legend": {
-          "symbolSize": 100,
-          "titleFont": "Outfit",
-          "titleFontSize": 14,
-          "labelFont": "Outfit",
-          "labelFontSize": 12
-        }
+        "labelFontSize": 12,
+        "labelAngle": 0,
+        "titleFont": "Outfit",
+        "titleFontSize": 12
       }
     },
-    "layer": [
-      {
-        "mark": "line"
-      },
-      {
-        "mark": "point",
-        "encoding":{
-          "tooltip": [
-            {"field": "Region", "type": "nominal"},
-            {"field": "Year", "type": "nominal"},
-            {"field": "Quarter", "type": "nominal"},
-            {"field": "Tourist_Arrivals", "type": "quantitative", "format": ",", "title":"Tourist Arrivals (thousands)"}
-          ]
-        }
+    "y": {
+      "field": "Adjusted_Tourist_Arrivals",
+      "type": "quantitative",
+      "axis": {
+        "title": "Tourist Arrivals",
+        "labelFont": "Outfit",
+        "labelFontSize": 12
       }
-    ]
-  }
-  
+    },
+    "color": {
+      "field": "Region",
+      "type": "nominal",
+      "scale": {
+        "domain": ["ASIA", "EUROPE", "AFRICA", "AMERICAS", "OCEANIA", "OTHERS"],
+        "range": ["#1f77b4", "#ff7f0e", "#2ca02c", "#ff69b4", "#9467bd", "#8c564b"]
+      },
+      "legend": {
+        "symbolSize": 100,
+        "titleFont": "Outfit",
+        "titleFontSize": 14,
+        "labelFont": "Outfit",
+        "labelFontSize": 12
+      }
+    }
+  },
+  "layer": [
+    {
+      "mark": "line"
+    },
+    {
+      "mark": "point",
+      "encoding": {
+        "tooltip": [
+          {"field": "Region", "type": "nominal"},
+          {"field": "Year", "type": "nominal"},
+          {"field": "Quarter", "type": "nominal"},
+          {
+            "field": "Tourist_Arrivals",
+            "type": "quantitative",
+            "format": ",",
+            "title": "Tourist Arrivals (thousands)"
+          }
+        ]
+      }
+    },
+    {
+      "transform": [
+        {
+          "filter": "Year_selection == 2015"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "dx": 5,
+        "dy": -5,
+        "fontSize": 12,
+        "font": "Outfit",
+        "color": "black"
+       
+      },
+      "encoding": {
+        "text": {"value": "Asia visitors consistently dominate the tourist arrivals to Malaysia"},
+        "x": {"value": 100},
+        "y": {"value": 100}  
+      }
+    },
+    {
+      "transform": [
+        {
+          "filter": "Year_selection == 2020"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "dx": 5,
+        "dy": -5,
+        "fontSize": 12,
+        "font": "Outfit"
+      },
+      "encoding": {
+        "text": {"value": "In the year 2020, the Covid-19 pandemic has prevented foreigners from visiting Malaysia"},
+        "x": {"value": 100},
+        "y": {"value": 200}    
+      }
+    },
+    {
+      "transform": [
+        {
+          "filter": "Year_selection == 2016"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "dx": 5,
+        "dy": -5,
+        "fontSize": 12,
+        "font": "Outfit",
+        "color": "black"
+      },
+      "encoding": {
+        "text": {"value": "Europe citizens like to visit Malaysia at the first quarter of the year!"},
+        "x": {"value": 50}, 
+        "y": {"value": 170}
+      }
+    },
+    {
+      "transform": [
+        {
+          "filter": "Year_selection == 2017"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "dx": 5,
+        "dy": -5,
+        "fontSize": 12,
+        "font": "Outfit",
+        "color": "black"
+      },
+      "encoding": {
+        "text": {"value": "There is a favour towards first and third quarter of the year among Europeans."},
+        "x": {"value": 150}, 
+        "y": {"value": 170}
+      }
+    }
+  ]
+}
