@@ -11,70 +11,96 @@
   "data": {
     "url": "https://raw.githubusercontent.com/amberphy/FIT3179/refs/heads/main/datasets/PurposeOfVisits.csv"
   },
-  "mark": "bar",
-  "width": {
-    "step": 180
-  },
+  "width": {"step": 180},
   "height": 400,
-  "encoding": {
-    "y": {
-      "aggregate": "sum",
-      "field": "Visitors",
-      "title": "Percentage",
-      "stack": "normalize",
-      "sort": "-y",
-      "axis": {
-        "title": "Percentage of Visitors",
-        "labelFont": "Outfit",
-        "labelFontSize": 12,
-        "labelAngle": 0,
-        "format": ".0%",
-        "titleFont": "Outfit"
+  "layer": [
+    {
+      "mark": "bar",
+      "encoding": {
+        "y": {
+          "aggregate": "sum",
+          "field": "Visitors",
+          "title": "Percentage",
+          "stack": "normalize",
+          "sort": "-y",
+          "axis": {
+            "title": "Percentage",
+            "labelFont": "Outfit",
+            "labelFontSize": 12,
+            "labelAngle": 0
+          }
+        },
+        "x": {
+          "field": "Year",
+          "axis": {
+            "title": "Year",
+            "labelFont": "Outfit",
+            "labelFontSize": 12,
+            "labelAngle": 0
+          }
+        },
+        "color": {
+          "field": "Purpose",
+          "scale": {"scheme": "set2"},
+          "legend": {
+            "orient": "bottom",
+            "direction": "horizontal",
+            "columns": 4,
+            "symbolSize": 300,
+            "titleFont": "Outfit",
+            "titleFontSize": 14,
+            "labelFont": "Outfit",
+            "labelFontSize": 12,
+            "labelLimit": 0
+          }
+        },
+        "tooltip": [
+          {"field": "Year", "type": "nominal"},
+          {"field": "Purpose", "type": "nominal", "title": "Purpose of Visit"},
+          {
+            "field": "Visitors",
+            "type": "quantitative",
+            "title": "Percentage of Visitors (%)",
+            "format": ".2f"
+          }
+        ]
       }
     },
-    "x": {
-      "field": "Year",
-      "axis": {
-        "title": "Year",
-        "labelFont": "Outfit",
-        "labelFontSize": 12,
-        "labelAngle": 0,
-        "titleFont": "Outfit"
-      }
-    },
-    "color": {
-      "field": "Purpose",
-      "scale": {
-        "scheme": "set2"
+    {
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "dx": -5,
+        "dy": -5,
+        "font": "Outfit",
+        "fontSize": 11
       },
-      "legend": {
-        "orient": "bottom",
-        "direction": "horizontal",
-        "columns": 4,
-        "symbolSize": 300,
-        "titleFont": "Outfit",
-        "titleFontSize": 14,
-        "labelFont": "Outfit",
-        "labelFontSize": 12,
-        "labelLimit": 0
+      "encoding": {
+        "x": {"field": "Year"},
+        "y": {
+          "sort": "-y",
+          "field": "Visitors",
+          "axis":null
+        },
+        "text": {
+          "condition": [
+            {
+              "test": "datum.Purpose == 'Shopping' && datum.Year == '2019'",
+              "value": "Shopping has been consistently one of the most important purpose of visit."
+            },
+            {
+              "test": "datum.Purpose == 'Official Business/ Education' && datum.Year == '2021'",
+              "value": "Drop in Visiting Friends/Relatives for 2021"
+            },
+            {
+              "test": "datum.Purpose == 'Incentive Travel/ Others' && datum.Year == '2021'",
+              "value": "Traveling to other states has became a leisure activity!"
+            }
+          ],
+          "value": ""
+        },
+        "color": {"value": "black"}
       }
-    },
-    "tooltip": [
-      {
-        "field": "Year",
-        "type": "nominal"
-      },
-      {
-        "field": "Purpose",
-        "type": "nominal",
-        "title": "Purpose of Visit"
-      },
-      {
-        "field": "Visitors",
-        "type": "quantitative",
-        "title": "Percentage of Visitors (%)",
-        "format": ".2f"
-      }
-    ]
-  }
+    }
+  ]
 }

@@ -17,92 +17,145 @@
       "width": 450,
       "height": 160,
       "layer": [
-      {
-        "params": [
-          {
-            "name": "hover",
-            "select": {"type": "point", "on": "pointerover", "clear": "pointerout"}
-          }
-        ],
-        "mark": {"type": "bar", "color": "#eee","tooltip": true},
-        "transform": [
-          {
-            "filter": "datum.Year == '2022/2021'"
-          }
-        ],
-        "encoding": {
-          "x": {
-            "title": "Purpose of Visit",
-            "field": "Emoji",
-            "type": "nominal",
-            "axis": {
-              "domain": false,
-              "ticks": false,
-              "labelAngle": 0,
-              "labelPadding": 4,
-              "labelFont": "Outfit",
-              "labelFontSize": 12
+        {
+          "params": [
+            {
+              "name": "hover",
+              "select": {
+                "type": "point",
+                "on": "pointerover",
+                "clear": "pointerout"
+              }
             }
+          ],
+          "mark": {
+            "type": "bar",
+            "color": "#eee",
+            "tooltip": true
           },
-          "opacity": {
-            "condition": {
-              "param": "hover",
-              "empty": false,
-              "value": 0.9
-            },
-            "value": 0.5
-          },
-          "detail":{ "field": "Visitors", "type": "quantitative"},
-         
-          "tooltip":[
-            {"field": "Purpose", "type": "nominal", "title": "Purpose of Visit"},
-            {"field": "Visitors", "type": "quantitative", "title": "Change (%)", "format": ".2f"}
-  
-          ]
-        }
-      },
-      {
-        "mark": {"type": "bar"},
-        "transform": [
-          {
-            "filter": "datum.Year == '2022/2021'"
-          }
-        ],
-        "encoding": {
-          "x": {
-            "title": "Purpose of Visit",
-            "field": "Emoji",
-            "type": "nominal",
-            "axis": {
-              "domain": false,
-              "ticks": false,
-              "labelAngle": 0,
-              "labelPadding": 4,
-              "labelFont": "Outfit",
-              "labelFontSize": 12
+          "transform": [
+            {
+              "filter": "datum.Year == '2022/2021'"
             }
-          },
-          "y": {
-            "title": "Percentage of Change",
-            "field": "Visitors",
-            "type": "quantitative",
-            "axis": {
-              "gridColor": {
-                "condition": {"test": "datum.value === 0", "value": "black"},
-                "value": "#ddd"
+          ],
+          "encoding": {
+            "x": {
+              "title": "Purpose of Visit",
+              "field": "Emoji",
+              "type": "nominal",
+              "axis": {
+                "domain": false,
+                "ticks": false,
+                "labelAngle": 0,
+                "labelPadding": 4,
+                "labelFont": "Outfit",
+                "labelFontSize": 12
               },
-              "labelFont": "Outfit",
-              "labelFontSize": 12,
-              "titleFont": "Outfit"
+              "sort": {
+                "field": "Purpose",
+                "order": "ascending"
+              }
+            },
+            "opacity": {
+              "condition": {
+                "param": "hover",
+                "empty": false,
+                "value": 0.9
+              },
+              "value": 0.5
+            },
+            "detail": {
+              "field": "Visitors",
+              "type": "quantitative"
+            },
+            "tooltip": [
+              {
+                "field": "Purpose",
+                "type": "nominal",
+                "title": "Purpose of Visit"
+              },
+              {
+                "field": "Visitors",
+                "type": "quantitative",
+                "title": "Change (%)",
+                "format": ".2f"
+              }
+            ]
+          }
+        },
+        {
+          "mark": {"type": "bar"},
+          "transform": [
+            {
+              "filter": "datum.Year == '2022/2021'"
             }
-          },
-          "color": {
-            "field": "Emoji",
-            "scale": {"scheme": "set2"}
+          ],
+          "encoding": {
+            "x": {
+              "title": "Purpose of Visit",
+              "field": "Emoji",
+              "type": "nominal",
+              "axis": {
+                "domain": false,
+                "ticks": false,
+                "labelAngle": 0,
+                "labelPadding": 4,
+                "labelFont": "Outfit",
+                "labelFontSize": 12
+              },
+              "sort": {
+                "field": "Purpose",
+                "order": "ascending"
+              }
+            },
+            "y": {
+              "title": "Percentage of Change (%)",
+              "field": "Visitors",
+              "type": "quantitative",
+              "axis": {
+                "gridColor": {
+                  "condition": {
+                    "test": "datum.value === 0",
+                    "value": "black"
+                  },
+                  "value": "#ddd"
+                },
+                "labelFont": "Outfit",
+                "labelFontSize": 12,
+                "titleFont": "Outfit"
+              }
+            },
+            "color": {
+              "field": "Purpose",
+              "scale": {"scheme": "set2"}
+            }
+          }
+        },
+        {
+          "mark": {"type": "text", "align": "left", "baseline": "middle", "dx": -10, "dy": -10,
+          "font": "Outfit"},
+          "transform": [
+            {
+              "filter": "datum.Year == '2022/2021'"
+            }
+          ],
+          "encoding": {
+            "x": {
+              "field": "Emoji",
+              "type": "nominal"
+            },
+            "y": {
+              "field": "Visitors",
+              "type": "quantitative"
+            },
+            "text": {
+              "field": "Visitors",
+              "type": "quantitative",
+              "format": ".2f"
+            }
           }
         }
-      }
-    ]
+      ]
     },
     {
       "title": {
@@ -115,96 +168,150 @@
       "width": 450,
       "height": 160,
       "layer": [
-      {
-        "params": [
-          {
-            "name": "hover",
-            "select": {"type": "point", "on": "pointerover", "clear": "pointerout"}
-          }
-        ],
-        "mark": {"type": "bar", "color": "#eee","tooltip": true},
-        "transform": [
-          {
-            "filter": "datum.Year == '2022/2019'"
-          }
-        ],
-        "encoding": {
-          "x": {
-            "title": "Purpose of Visit",
-            "field": "Emoji",
-            "type": "nominal",
-            "axis": {
-              "domain": false,
-              "ticks": false,
-              "labelAngle": 0,
-              "labelPadding": 4,
-              "labelFont": "Outfit",
-              "labelFontSize": 12,
-              "titleFont": "Outfit"
+        {
+          "params": [
+            {
+              "name": "hover",
+              "select": {
+                "type": "point",
+                "on": "pointerover",
+                "clear": "pointerout"
+              }
             }
+          ],
+          "mark": {
+            "type": "bar",
+            "color": "#eee",
+            "tooltip": true
           },
-          "opacity": {
-            "condition": {
-              "param": "hover",
-              "empty": false,
-              "value": 0.9
-            },
-            "value": 0.5
-          },
-          "detail":{ "field": "Visitors", "type": "quantitative"},
-         
-          "tooltip":[
-            {"field": "Purpose", "type": "nominal", "title": "Purpose of Visit"},
-            {"field": "Visitors", "type": "quantitative", "title": "Change (%)", "format": ".2f"}
-  
-          ]
-        }
-      },
-      {
-        "mark": {"type": "bar"},
-        "transform": [
-          {
-            "filter": "datum.Year == '2022/2019'"
-          }
-        ],
-        "encoding": {
-          "x": {
-            "title": "Purpose of Visit",
-            "field": "Emoji",
-            "type": "nominal",
-            "axis": {
-              "domain": false,
-              "ticks": false,
-              "labelAngle": 0,
-              "labelPadding": 4,
-              "labelFont": "Outfit",
-              "labelFontSize": 12,
-              "titleFont": "Outfit"
+          "transform": [
+            {
+              "filter": "datum.Year == '2022/2019'"
             }
-          },
-          "y": {
-            "title": "Percentage of Change",
-            "field": "Visitors",
-            "type": "quantitative",
-            "axis": {
-              "gridColor": {
-                "condition": {"test": "datum.value === 0", "value": "black"},
-                "value": "#ddd"
+          ],
+          "encoding": {
+            "x": {
+              "title": "Purpose of Visit",
+              "field": "Emoji",
+              "type": "nominal",
+              "axis": {
+                "domain": false,
+                "ticks": false,
+                "labelAngle": 0,
+                "labelPadding": 4,
+                "labelFont": "Outfit",
+                "labelFontSize": 12,
+                "titleFont": "Outfit"
               },
-              "labelFont": "Outfit",
-              "labelFontSize": 12,
-              "titleFont": "Outfit"
+              "sort": {
+                "field": "Purpose",
+                "order": "ascending"
+              }
+            },
+            "opacity": {
+              "condition": {
+                "param": "hover",
+                "empty": false,
+                "value": 0.9
+              },
+              "value": 0.5
+            },
+            "detail": {
+              "field": "Visitors",
+              "type": "quantitative"
+            },
+            "tooltip": [
+              {
+                "field": "Purpose",
+                "type": "nominal",
+                "title": "Purpose of Visit"
+              },
+              {
+                "field": "Visitors",
+                "type": "quantitative",
+                "title": "Change (%)",
+                "format": ".2f"
+              }
+            ]
+          }
+        },
+        {
+          "mark": {"type": "bar"},
+          "transform": [
+            {
+              "filter": "datum.Year == '2022/2019'"
             }
-          },
-          "color": {
-            "field": "Emoji",
-            "scale": {"scheme": "set2"},
-            "legend": null
-
+          ],
+          "encoding": {
+            "x": {
+              "title": "Purpose of Visit",
+              "field": "Emoji",
+              "type": "nominal",
+              "axis": {
+                "domain": false,
+                "ticks": false,
+                "labelAngle": 0,
+                "labelPadding": 4,
+                "labelFont": "Outfit",
+                "labelFontSize": 12,
+                "titleFont": "Outfit"
+              },
+              "sort": {
+                "field": "Purpose",
+                "order": "ascending"
+              }
+            },
+            "y": {
+              "title": "Percentage of Change (%)",
+              "field": "Visitors",
+              "type": "quantitative",
+              "axis": {
+                "gridColor": {
+                  "condition": {
+                    "test": "datum.value === 0",
+                    "value": "black"
+                  },
+                  "value": "#ddd"
+                },
+                "labelFont": "Outfit",
+                "labelFontSize": 12,
+                "titleFont": "Outfit"
+              }
+            },
+            "color": {
+              "field": "Purpose",
+              "scale": {"scheme": "set2"},
+              "legend": null
+            }
+          }
+        },
+        {
+          "mark": {"type": "text", "align": "left", "baseline": "middle", "dx": -10, "dy": -10,
+            "font": "Outfit"} ,
+          "transform": [
+            {
+              "filter": "datum.Year == '2022/2019'"
+            }
+          ],
+          "encoding": {
+            "x": {
+              "field": "Emoji",
+              "type": "nominal"
+            },
+            "y": {
+              "field": "Visitors",
+              "type": "quantitative"
+            },
+            "text": {
+              "field": "Visitors",
+              "type": "quantitative",
+              "format": ".2f"
+              
+            }
+      
           }
         }
-      }
-    ]
+      ]
     }
   ]
 }

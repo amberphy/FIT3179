@@ -124,7 +124,8 @@
       "encoding": {
         "text": {"value": "Asia visitors consistently dominate the tourist arrivals to Malaysia"},
         "x": {"value": 100},
-        "y": {"value": 100}  
+        "y": {"value": 100},
+        "color": {"value": "black"}  
       }
     },
     {
@@ -144,7 +145,8 @@
       "encoding": {
         "text": {"value": "In the year 2020, the Covid-19 pandemic has prevented foreigners from visiting Malaysia"},
         "x": {"value": 100},
-        "y": {"value": 200}    
+        "y": {"value": 200},
+        "color": {"value": "black"}    
       }
     },
     {
@@ -165,7 +167,8 @@
       "encoding": {
         "text": {"value": "Europe citizens like to visit Malaysia at the first quarter of the year!"},
         "x": {"value": 50}, 
-        "y": {"value": 170}
+        "y": {"value": 170},
+        "color": {"value": "black"}
       }
     },
     {
@@ -186,7 +189,9 @@
       "encoding": {
         "text": {"value": "There is a favour towards first and third quarter of the year among Europeans."},
         "x": {"value": 150}, 
-        "y": {"value": 170}
+        "y": {"value": 170},
+        "color": {"value": "black"}
+
       }
     }
   ]
