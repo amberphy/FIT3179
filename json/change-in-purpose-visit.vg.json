@@ -14,7 +14,7 @@
         "fontWeight": "bold",
         "offset": 10
       },
-      "width": 400,
+      "width": 450,
       "height": 160,
       "layer": [
       {
@@ -83,7 +83,7 @@
             }
           },
           "y": {
-            "title": "Change (%)",
+            "title": "Percentage of Change",
             "field": "Visitors",
             "type": "quantitative",
             "axis": {
@@ -92,7 +92,8 @@
                 "value": "#ddd"
               },
               "labelFont": "Outfit",
-              "labelFontSize": 12
+              "labelFontSize": 12,
+              "titleFont": "Outfit"
             }
           },
           "color": {
@@ -111,7 +112,7 @@
         "fontWeight": "bold",
         "offset": 10
       },
-      "width": 400,
+      "width": 450,
       "height": 160,
       "layer": [
       {
@@ -138,7 +139,8 @@
               "labelAngle": 0,
               "labelPadding": 4,
               "labelFont": "Outfit",
-              "labelFontSize": 12
+              "labelFontSize": 12,
+              "titleFont": "Outfit"
             }
           },
           "opacity": {
@@ -176,11 +178,12 @@
               "labelAngle": 0,
               "labelPadding": 4,
               "labelFont": "Outfit",
-              "labelFontSize": 12
+              "labelFontSize": 12,
+              "titleFont": "Outfit"
             }
           },
           "y": {
-            "title": "Change (%)",
+            "title": "Percentage of Change",
             "field": "Visitors",
             "type": "quantitative",
             "axis": {
@@ -189,7 +192,8 @@
                 "value": "#ddd"
               },
               "labelFont": "Outfit",
-              "labelFontSize": 12
+              "labelFontSize": 12,
+              "titleFont": "Outfit"
             }
           },
           "color": {

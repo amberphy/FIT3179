@@ -61,40 +61,26 @@
                 </div>
             </div>
         </div>
+          
 
         <!-- Vis3 + Textbox (left) -->
         <div class="pure-g">
-            <div class="pure-u-1-2">
+            <div class="pure-u-1-3">
                 <div class="description description-left">
                     <h3>Quarterly Tourist Arrivals to Malaysia</h3>
                     <p>Tourist arrivals to Malaysia show strong seasonal variations...</p>
                 </div>
             </div>
-            <div class="pure-u-1-2">
+            <div class="pure-u-2-3">
                 <div id="vis3" class="vis-container"></div>
             </div>
         </div>
 
-        <!-- Vis4 + Vis5 (horizontally) -->
-        <div class="pure-g">
-            <div class="pure-u-1-2">
-                <div id="vis4" class="vis-container"></div>
-            </div>
-            <div class="pure-u-1-2">
-                <div id="vis5" class="vis-container"></div>
-            </div>
+        <!-- Vis4-->
+        <div class="pure-u-1-2">
+            <div id="vis4" class="vis-container"></div>
         </div>
-
-        <!-- Vis6 -->
-        <div id="vis6" class="vis-container"></div>
-
-        <!-- Textbox -->
-        <div class="pure-g">
-            <div class="pure-u-1-1">
-                <p>Inbound tourism expenditure in Malaysia has grown significantly...</p>
-            </div>
-        </div>
-
+        
         <!-- Vis7 + Textbox (right) -->
         <div class="pure-g">
             <div class="pure-u-2-3">
@@ -103,10 +89,33 @@
             <div class="pure-u-1-3">
                 <div class="description description-right">
                     <h2>Tourism and Expenditure Insights</h2>
-                    <p>Tourism data shows a steady increase in...</p>
+                    <p>Tourism data shows a steady increase in...
+                        From 2000 until 2019, there is a general upward trend in overall spending, with a noticeable increase in 2010, peaking around 2018. Accommodation services consistently represent the largest share of expenditure, indicated by the dominant blue region. Country-specific tourism characteristic goods (orange) and passenger transport services (green) are also significant contributors. Cultural, sports, and recreational services (pink) and travel agencies' services (purple) account for smaller shares.
+
+Post-2019, there is a dramatic decline in tourism expenditure across all categories, reflecting the impact of the COVID-19 pandemic. By 2022, there is a slight recovery visible, although it has not reached pre-pandemic levels.
+
+Interestingly, accommodation and country-specific tourism characteristic goods are consistently the most significant sectors, showing how much of Malaysia's inbound tourism revenue depends on these services. The graph also highlights how the pandemic hit tourism-related sectors in an unprecedented manner.
+                    </p>
                 </div>
             </div>
         </div>
+        <!-- Vis5 + vis6 -->
+        <div class="pure-g">
+            <div class="pure-u-1-2">
+                <div id="vis6" class="vis-container"></div>
+            </div>
+            <div class="pure-u-1-2">
+                <div id="vis5" class="vis-container"></div>
+            </div>
+        </div>
+
+        <!-- Textbox -->
+        <div class="pure-g">
+            <div class="pure-u-1-1">
+                <p>Inbound tourism expenditure in Malaysia has grown significantly...</p>
+            </div>
+        </div>
+
 
         <!-- Vis8 -->
         <div id="vis8" class="vis-container"></div>
@@ -135,9 +144,9 @@
         var specVis1 = "./json/tourism_expenditures.vg.json";
         var specVis2 = "./json/hotel_guests_by_states.vg.json";
         var specVis3 = "./json/quarterly_malaysia.vg.json";
-        var specVis4 = "./json/purpose_of_visit_percentage.vg.json";
+        var specVis4 = "./json/topten_markets_arrivals.vg.json";
         var specVis5 = "./json/change-in-purpose-visit.vg.json";
-        var specVis6 = "./json/topten_markets_arrivals.vg.json";
+        var specVis6 = "./json/purpose_of_visit_percentage.vg.json";
         var specVis7 = "./json/inbound-tourism-schema.vg.json";
         var specVis8 = "./json/heat_map_states_domestic.vg.json";
 

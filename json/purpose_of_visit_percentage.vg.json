@@ -1,54 +1,80 @@
 {
-    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-    "background": "#eaeaea",
-    "title": {
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "background": "#eaeaea",
+  "title": {
     "text": "Purpose of Visit for Domestic Visitors",
     "font": "Orbitron",
     "fontSize": 18,
     "fontWeight": "bold",
     "offset": 20
   },
-    "data": { "url": "https://raw.githubusercontent.com/amberphy/FIT3179/refs/heads/main/datasets/PurposeOfVisits.csv"},
-    "mark": "bar",
-    "width": {"step": 170},
-    "height": 350,
-    "encoding": {
-      "y": {
-        "aggregate": "sum", "field": "Visitors",
-        "title": "Percentage",
-        "stack":  "normalize",
-        "sort": "-y",
-        "axis": {"title": "Percentage",
+  "data": {
+    "url": "https://raw.githubusercontent.com/amberphy/FIT3179/refs/heads/main/datasets/PurposeOfVisits.csv"
+  },
+  "mark": "bar",
+  "width": {
+    "step": 180
+  },
+  "height": 400,
+  "encoding": {
+    "y": {
+      "aggregate": "sum",
+      "field": "Visitors",
+      "title": "Percentage",
+      "stack": "normalize",
+      "sort": "-y",
+      "axis": {
+        "title": "Percentage of Visitors",
         "labelFont": "Outfit",
         "labelFontSize": 12,
-        "labelAngle": 0}
+        "labelAngle": 0,
+        "format": ".0%",
+        "titleFont": "Outfit"
+      }
+    },
+    "x": {
+      "field": "Year",
+      "axis": {
+        "title": "Year",
+        "labelFont": "Outfit",
+        "labelFontSize": 12,
+        "labelAngle": 0,
+        "titleFont": "Outfit"
+      }
+    },
+    "color": {
+      "field": "Purpose",
+      "scale": {
+        "scheme": "set2"
       },
-      "x": {"field": "Year",
-        "axis": {"title": "Year",
-            "labelFont": "Outfit",
-            "labelFontSize": 12,
-            "labelAngle": 0}},
-      "color": {
+      "legend": {
+        "orient": "bottom",
+        "direction": "horizontal",
+        "columns": 4,
+        "symbolSize": 300,
+        "titleFont": "Outfit",
+        "titleFontSize": 14,
+        "labelFont": "Outfit",
+        "labelFontSize": 12,
+        "labelLimit": 0
+      }
+    },
+    "tooltip": [
+      {
+        "field": "Year",
+        "type": "nominal"
+      },
+      {
         "field": "Purpose",
-        "scale": {"scheme": "set2"},
-        "legend": {
-            "orient": "bottom",
-            "direction": "horizontal", 
-            "columns": 4, 
-            "symbolSize": 300,
-            "titleFont": "Outfit",
-            "titleFontSize": 14,
-            "labelFont": "Outfit",
-            "labelFontSize": 12,
-            "labelLimit": 0          
-          }
+        "type": "nominal",
+        "title": "Purpose of Visit"
       },
-      "tooltip": [
-            {"field": "Year", "type": "nominal"},
-            {"field": "Purpose", "type": "nominal", "title": "Purpose of Visit"},
-            {"field": "Visitors", "type": "quantitative", "title": "Percentage of Visitors (%)", "format": ".2f"}
-          ]
-
-    }
+      {
+        "field": "Visitors",
+        "type": "quantitative",
+        "title": "Percentage of Visitors (%)",
+        "format": ".2f"
+      }
+    ]
   }
-  
+}

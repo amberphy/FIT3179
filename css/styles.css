@@ -85,10 +85,16 @@ margin-right: 5px; /* Adds space between buttons */
 
 .description h2, h1 {
     margin-top: 0px;
+    text-align: left;
+
 }
 
 .description-right {
-    padding-left: 10px;
+    margin-top: 240px;
+    margin-left: 120px;
+    padding: 10px;
+    z-index: 9999;
+    text-align: justify;
 }
 
 .description-left {
@@ -108,5 +114,4 @@ margin-right: 5px; /* Adds space between buttons */
     padding: 20px; /* Optional: Adds some padding to the inside of the credits section */
     margin-top: 50px; /* Optional: Adds space above the credits */
 }
-
 

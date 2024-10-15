@@ -26,9 +26,7 @@
     "transform": [
       {"filter": "datum.Country_Of_Nationality !== 'Total'"},
       {"filter": "datum.Year == Year"},
-      {"calculate": "toNumber(datum.Arrivals)", "as": "Arrivals"},
-      {"calculate": "toNumber(datum.Market_Share)", "as": "Market_Share"}
-    ],
+      {"calculate": "toNumber(datum.Arrivals)", "as": "Arrivals"}    ],
     "hconcat": [
       {
         "width": 600,
@@ -122,109 +120,55 @@
         "transform": [
           {"filter": "datum.Country_Of_Nationality !== 'Total'"},
           {"filter": "datum.Year == Year"},
-          {"calculate": "toNumber(datum.Arrivals)", "as": "Arrivals"},
-          {"calculate": "toNumber(datum.Market_Share)", "as": "Market_Share"}
+          {"calculate": "toNumber(datum.Arrivals)", "as": "Arrivals"}
         ],
         "width": 300,
         "height": 300,
-        "layer": [
-          {
-            "mark": {
-              "type": "arc",
-              "tooltip": true
-            },
-            "encoding": {
-              "theta": {
-                "field": "Market_Share",
-                "type": "quantitative",
-                "stack": "normalize"              
-              },
-              "color": {
-                "field": "Country_Of_Nationality",
-                "type": "nominal",
-                "title": "Country of Nationality",
-                "legend": {
-                  "orient": "bottom",
-                  "direction": "horizontal",
-                  "columns": 4,
-                  "symbolSize": 200,
-                  "titleFont": "Outfit",
-                  "titleFontSize": 14,
-                  "labelFont": "Outfit",
-                  "labelFontSize": 12,
-                  "labelLimit": 0,
-                  "labelPadding": 20
+        "mark": {
+          "type": "arc",
+          "tooltip": true
+        },
+        "encoding": {
+          "theta": {
+            "field": "Market_Share",
+            "type": "quantitative",
+            "stack": "normalize"              
+          },
+          "color": {
+            "field": "Country_Of_Nationality",
+            "type": "nominal",
+            "title": "Country of Nationality",
+            "legend": {
+              "orient": "bottom",
+              "direction": "horizontal",
+              "columns": 4,
+              "symbolSize": 200,
+              "titleFont": "Outfit",
+              "titleFontSize": 14,
+              "labelFont": "Outfit",
+              "labelFontSize": 12,
+              "labelLimit": 0,
+              "labelPadding": 20
 
-                }
-              },
-              "tooltip": [
-                {
-                  "field": "Country_Of_Nationality",
-                  "title": "Country of Nationality"
-                },
-                {
-                  "field": "Arrivals",
-                  "title": "Tourist Arrivals",
-                  "format": ","
-                },
-                {
-                  "field": "Market_Share",
-                  "title": "Market Share (%)",
-                  "format": ","
-                }
-              ]
             }
           },
-          {
-            "mark": {
-              "type": "text",
-              "align": "left",
-              "baseline": "middle",
-              "dx": 10,
-              "dy": -5
+          "tooltip": [
+            {
+              "field": "Country_Of_Nationality",
+              "title": "Country of Nationality"
             },
-            "encoding": {
-              "text": {
-                "field": "Market_Share",
-                "type": "quantitative",
-                "format": ".1f"
-
-              },
-              "theta": {
-                "field": "Market_Share",
-                "type": "quantitative",
-                "stack": "normalize"             
-               },
-              "radius": {
-                "value": 120
-              },
-              "color": {
-                "value": "black"
-              }
-            }
-          },
-          {
-            "mark": {
-              "type": "rule",
-              "color": "gray",
-              "strokeWidth": 1
+            {
+              "field": "Arrivals",
+              "title": "Tourist Arrivals",
+              "format": ","
             },
-            "encoding": {
-              "theta": {
-                "field": "Market_Share",
-                "type": "quantitative",
-                "stack": "normalize"
-              },
-              "radius": {
-                "value": 110
-              },
-              "theta2": {
-                "value": 0
-              }
+            {
+              "field": "Market_Share",
+              "title": "Market Share (%)",
+              "format": ","
             }
-          }
-        ]
+          ]
+        }
       }
-      
     ]
   }

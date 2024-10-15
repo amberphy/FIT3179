@@ -225,6 +225,222 @@
           }
         ]
       }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "country": "Malaysia",
+            "lat": 4.2105,
+            "lon": 101.9758,
+            "arrivals": "135k"
+          },
+          {
+            "country": "USA",
+            "lat": 38.7946,
+            "lon": -106.5348,
+            "arrivals": "22,100k"
+          },
+          {
+            "country": "Indonesia",
+            "lat": -0.7893,
+            "lon": 113.9213,
+            "arrivals": "1,546k"
+          },
+          {
+            "country": "France",
+            "lat": 46.6034,
+            "lon": 1.8883,
+            "arrivals": "48,395k"
+          }
+        ]
+      },
+      "layer": [
+        {
+          "mark": {
+            "type": "circle",
+            "color": "orange"
+          },
+          "encoding": {
+            "longitude": {
+              "field": "lon",
+              "type": "quantitative"
+            },
+            "latitude": {
+              "field": "lat",
+              "type": "quantitative"
+            }
+          }
+        },
+        {
+          "mark": {
+            "type": "text",
+            "dy": -10,
+            "dx": 5,
+            "color": "black",
+            "fontSize": 12,
+            "font":"Outfit"
+          },
+          "encoding": {
+            "longitude": {
+              "field": "lon",
+              "type": "quantitative"
+            },
+            "latitude": {
+              "field": "lat",
+              "type": "quantitative"
+            },
+            "text": {
+              "field": "country",
+              "type": "nominal"
+            }
+          }
+        },
+        {
+          "mark": {
+            "type": "text",
+            "dy": 10,
+            "dx": 5,
+            "color": "purple",
+            "fontSize": 11,
+            "font":"Outfit"
+          },
+          "encoding": {
+            "longitude": {
+              "field": "lon",
+              "type": "quantitative"
+            },
+            "latitude": {
+              "field": "lat",
+              "type": "quantitative"
+            },
+            "text": {
+              "field": "arrivals",
+              "type": "nominal",
+              "title": "Tourist Arrivals (thousands)"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "notes": "USA recovered 22.1 million international arrivals",
+            "lati": 7.013667927566642,
+            "long": -130.89843750000003,
+            "more": "Popular destinations like New York, \n Florida, and California"
+          },
+          {
+            "notes": "",
+            "lati": 0.867350911459308,
+            "long": -130.89843750000003,
+            "more": " remained top choices for visitors, driven by a combination of"
+          },
+          {
+            "notes": "",
+            "lati": -4.867350911459308,
+            "long": -130.89843750000003,
+            "more": "leisure, business, and family visits."
+          },
+          {
+            "notes": "France welcomed 48.4 million",
+            "lati": 35.460669951495305,
+            "long": -40,
+            "more": ""
+          },
+          {
+            "notes": "international arrivals",
+            "lati": 29.460669951495305,
+            "long": -40,
+            "more": "Thanks to its renowned cultural attractions"
+          },
+          {
+            "notes": "",
+            "lati": 24.460669951495305,
+            "long": -40,
+            "more": "reflecting a strong rebound in tourism interest"
+          },
+          {
+            "notes": "Malaysia's neighbouring country Indonesia",
+            "lati": -15.145127183376115,
+            "long": 78.04687500000001,
+            "more": "Indonesia had always been excellent in"
+          },
+          {
+            "notes": "",
+            "lati": -20.145127183376115,
+            "long": 78.04687500000001,
+            "more": "attracting tourists especially to Bali, "
+          },
+          {
+            "notes": "",
+            "lati": -25.145127183376115,
+            "long": 78.04687500000001,
+            "more": "whereas Malaysia, though small,"
+          },
+          {
+            "notes": "",
+            "lati": -30.145127183376115,
+            "long": 78.04687500000001,
+            "more": "has its own charm in diverse culture and nature."
+          }
+          
+          
+        ]
+      },
+      "layer": [
+        {
+          "mark": {
+            "type": "text",
+            "dy": -10,
+            "dx": 5,
+            "color": "black",
+            "fontSize": 12,
+            "font":"Outfit"
+          },
+          "encoding": {
+            "longitude": {
+              "field": "long",
+              "type": "quantitative"
+            },
+            "latitude": {
+              "field": "lati",
+              "type": "quantitative"
+            },
+            "text": {
+              "field": "notes",
+              "type": "nominal"
+            }
+          }
+        },
+        {
+          "mark": {
+            "type": "text",
+            "dy": 10,
+            "dx": 5,
+            "color": "green",
+            "fontSize": 11,
+            "font":"Outfit"
+          },
+          "encoding": {
+            "longitude": {
+              "field": "long",
+              "type": "quantitative"
+            },
+            "latitude": {
+              "field": "lati",
+              "type": "quantitative"
+            },
+            "text": {
+              "field": "more",
+              "type": "nominal",
+              "format": {"expr": "replace(datum.more, '\\\\n', '\\n')"}
+            }
+          }
+        }
+      ]
     }
   ]
 }
