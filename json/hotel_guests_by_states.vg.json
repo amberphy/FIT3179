@@ -7,18 +7,12 @@
     "fontWeight": "bold",
     "offset": 20
   },
-  "repeat": {
-    "column": [
-      "DOMESTIC",
-      "FOREIGNER"
-    ]
-  },
   "resolve": {
     "scale": {
       "color": "independent"
     }
   },
-  "background": "#eaeaea",
+  "background": "transparent",
   "data": {
     "url": "https://raw.githubusercontent.com/amberphy/FIT3179/refs/heads/main/datasets/hotel_guests_by_states.csv"
   },
@@ -42,81 +36,710 @@
       }
     }
   ],
-  "spec": {
-    "width": 600,
-    "height": 300,
-    "data": {
-      "url": "https://raw.githubusercontent.com/amberphy/FIT3179/refs/heads/main/datasets/hotel_guests_by_states.csv"
-    },
-    "transform": [
-      {
-        "filter": "datum.Year == Year"
-      },
-      {
-        "lookup": "City",
-        "from": {
+  "hconcat": [
+    {
+      "width": 600,
+      "height": 300,
+      "layer": [
+        {
           "data": {
-            "url": "https://raw.githubusercontent.com/amberphy/FIT3179/refs/heads/main/ne_10m_admin_1_states_provinces.json",
-            "format": {
-              "type": "topojson",
-              "feature": "ne_10m_admin_1_states_provinces"
+            "url": "https://raw.githubusercontent.com/amberphy/FIT3179/refs/heads/main/datasets/hotel_guests_by_states.csv"
+          },
+          "transform": [
+            {
+              "filter": "datum.Year == Year"
+            },
+            {
+              "lookup": "City",
+              "from": {
+                "data": {
+                  "url": "https://raw.githubusercontent.com/amberphy/FIT3179/refs/heads/main/ne_10m_admin_1_states_provinces.json",
+                  "format": {
+                    "type": "topojson",
+                    "feature": "ne_10m_admin_1_states_provinces"
+                  }
+                },
+                "key": "properties.name"
+              },
+              "as": "geo"
+            }
+          ],
+          "projection": {
+            "type": "equalEarth"
+          },
+          "mark": {
+            "type": "geoshape",
+            "stroke": "white",
+            "strokeWidth": 0.8
+          },
+          "encoding": {
+            "shape": {
+              "field": "geo",
+              "type": "geojson"
+            },
+            "color": {
+              "field": "DOMESTIC",
+              "type": "quantitative",
+              "scale": {
+                "scheme": "lightorange"
+              },
+              "legend": {
+                "orient": "bottom",
+                "direction": "horizontal",
+                "columns": 6,
+                "labelLimit": 400,
+                "symbolSize": 300,
+                "titleFont": "Outfit",
+                "titleFontSize": 14,
+                "labelFont": "Outfit",
+                "labelFontSize": 12
+              }
+            },
+            "tooltip": [
+              {
+                "field": "City",
+                "type": "nominal",
+                "title": "State"
+              },
+              {
+                "field": "DOMESTIC",
+                "type": "quantitative",
+                "title": "Hotel Guests",
+                "format": ","
+              }
+            ]
+          }
+        },
+        {
+          "transform": [
+            {
+              "filter": "Year == 2019"
+            }
+            ],
+          "data": {
+            "values": [
+              {
+                "notes": "In 2019, Pahang experienced a significant influx of hotel guest arrivals",
+                "lati": 6.5118147063479,
+                "long": 109.01806640625001,
+                "more": "Malaysia had launched its Visit Malaysia 2020 (VM2020) campaign,"
+              },
+              {
+                "notes": "",
+                "lati": 6.1518147063479,
+                "long": 109.01806640625001,
+                "more": "which aimed to boost tourism ahead of 2020."
+              },
+              {
+                "notes": "",
+                "lati": 5.7718147063479,
+                "long": 109.01806640625001,
+                "more": "In 2019, efforts to promote tourism were in full swing,"
+              },
+              {
+                "notes": "",
+                "lati": 5.4118147063479,
+                "long": 109.01806640625001,
+                "more": "with significant marketing campaigns focusing on Pahang's natural attractions,"
+              },
+              {
+                "notes": "",
+                "lati": 5.0618147063479,
+                "long": 109.01806640625001,
+                "more": "especially Cameron Highlands, Genting Highlands, and Fraser's Hill"
+              },
+              {
+                "notes": "",
+                "lati": 4.7118147063479,
+                "long": 109.01806640625001,
+                "more": "as well as its beautiful islands and beaches like Tioman Island."
+              }
+            ]
+          },
+          "layer": [
+          {
+            "mark": {
+              "type": "text",
+              "dy": -10,
+              "dx": 5,
+              "color": "black",
+              "fontSize": 12,
+              "font": "Outfit"
+            },
+            "encoding": {
+              "longitude": {
+                "field": "long",
+                "type": "quantitative"
+              },
+              "latitude": {
+                "field": "lati",
+                "type": "quantitative"
+              },
+              "text": {
+                "field": "notes",
+                "type": "nominal"
+              }
             }
           },
-          "key": "properties.name"
-        },
-        "as": "geo"
-      }
-    ],
-    "projection": {
-      "type": "equalEarth"
-    },
-    "mark": {
-      "type": "geoshape",
-      "stroke": "white",
-      "strokeWidth": 0.8
-    },
-    "encoding": {
-      "shape": {
-        "field": "geo",
-        "type": "geojson"
-      },
-      "color": {
-        "field": {
-          "repeat": "column"
-        },
-        "type": "quantitative",
-        "scale": {
-          "scheme": "lightorange"
-        },
-        "legend": {
-          "orient": "bottom",
-          "direction": "horizontal",
-          "columns": 6,
-          "labelLimit": 400,
-          "symbolSize": 300,
-          "titleFont": "Outfit",
-          "titleFontSize": 14,
-          "labelFont": "Outfit",
-          "labelFontSize": 12
-        }
-      },
-      "tooltip": [
-        {
-          "field": "City",
-          "type": "nominal",
-          "title": "State"
+          {
+            "mark": {
+              "type": "text",
+              "dy": 10,
+              "dx": 5,
+              "color": "#0150a4",
+              "fontSize": 11,
+              "font": "Outfit"
+            },
+            "encoding": {
+              "longitude": {
+                "field": "long",
+                "type": "quantitative"
+              },
+              "latitude": {
+                "field": "lati",
+                "type": "quantitative"
+              },
+              "text": {
+                "field": "more",
+                "type": "nominal",
+                "format": {
+                  "expr": "replace(datum.more, '\\\\n', '\\n')"
+                }
+              }
+            }
+          }
+          ]
         },
         {
-          "field": {
-            "repeat": "column"
+          "transform": [
+            {
+              "filter": "Year == 2021"
+            }
+            ],
+          "data": {
+            "values": [
+              {
+                "notes": "The pandemic has made Sarawak a",
+                "lati": 3.5118147063479,
+                "long": 108.01806640625001,
+                "more": ""
+              },
+              {
+                "notes": "popular place among the locals",
+                "lati": 3.1518147063479,
+                "long": 108.01806640625001,
+                "more": "Its rich cultural heritage, natural attractions like"
+              },
+               {
+                "notes": "",
+                "lati": 2.8518147063479,
+                "long": 108.01806640625001,
+                "more": "rainforests and national parks, with unique experiences"
+              },
+              {
+                "notes": "",
+                "lati": 2.5518147063479,
+                "long": 108.01806640625001,
+                "more": "such as visiting indigenous communities, attracting"
+              },
+              {
+                "notes": "",
+                "lati": 2.2518147063479,
+                "long": 108.01806640625001,
+                "more": "domestic travelers seeking nature and adventure."
+              }
+              
+            ]
           },
-          "type": "quantitative",
-          "title": [
-            "Hotel Guests"
+          "layer": [
+          {
+            "mark": {
+              "type": "text",
+              "dy": -10,
+              "dx": 5,
+              "color": "black",
+              "fontSize": 12,
+              "font": "Outfit"
+            },
+            "encoding": {
+              "longitude": {
+                "field": "long",
+                "type": "quantitative"
+              },
+              "latitude": {
+                "field": "lati",
+                "type": "quantitative"
+              },
+              "text": {
+                "field": "notes",
+                "type": "nominal"
+              }
+            }
+          },
+          {
+            "mark": {
+              "type": "text",
+              "dy": 10,
+              "dx": 5,
+              "color": "#0150a4 ",
+              "fontSize": 11,
+              "font": "Outfit"
+            },
+            "encoding": {
+              "longitude": {
+                "field": "long",
+                "type": "quantitative"
+              },
+              "latitude": {
+                "field": "lati",
+                "type": "quantitative"
+              },
+              "text": {
+                "field": "more",
+                "type": "nominal",
+                "format": {
+                  "expr": "replace(datum.more, '\\\\n', '\\n')"
+                }
+              }
+            }
+          }
+          ]
+        },
+        {
+          "transform": [
+            {
+              "filter": "Year == 2022"
+            }
+            ],
+          "data": {
+            "values": [
+              {
+                "notes": "Pahang gains the most hotel guests",
+                "lati": 3.5118147063479,
+                "long": 107.01806640625001,
+                "more": ""
+              },
+              {
+                "notes": "with their touristy spots",
+                "lati": 3.1518147063479,
+                "long": 107.01806640625001,
+                "more": "The burst of hotels at the hillside, eg:"
+              },
+               {
+                "notes": "",
+                "lati": 2.8518147063479,
+                "long": 107.01806640625001,
+                "more": "Genting Highlands and Cameron Highlands"
+              },
+              {
+                "notes": "",
+                "lati": 2.5518147063479,
+                "long": 107.01806640625001,
+                "more": "has made a sensation in attracting domestic"
+              },
+              {
+                "notes": "",
+                "lati": 2.2518147063479,
+                "long": 107.01806640625001,
+                "more": "tourists to take a vacation at affordable price"
+              }
+              
+            ]
+          },
+          "layer": [
+          {
+            "mark": {
+              "type": "text",
+              "dy": -10,
+              "dx": 5,
+              "color": "black",
+              "fontSize": 12,
+              "font": "Outfit"
+            },
+            "encoding": {
+              "longitude": {
+                "field": "long",
+                "type": "quantitative"
+              },
+              "latitude": {
+                "field": "lati",
+                "type": "quantitative"
+              },
+              "text": {
+                "field": "notes",
+                "type": "nominal"
+              }
+            }
+          },
+          {
+            "mark": {
+              "type": "text",
+              "dy": 10,
+              "dx": 5,
+              "color": "#0150a4",
+              "fontSize": 11,
+              "font": "Outfit"
+            },
+            "encoding": {
+              "longitude": {
+                "field": "long",
+                "type": "quantitative"
+              },
+              "latitude": {
+                "field": "lati",
+                "type": "quantitative"
+              },
+              "text": {
+                "field": "more",
+                "type": "nominal",
+                "format": {
+                  "expr": "replace(datum.more, '\\\\n', '\\n')"
+                }
+              }
+            }
+          }
+          ]
+        }
+      ]
+    },
+    {
+      "width": 600,
+      "height": 300,
+      "layer": [
+        {
+          "data": {
+            "url": "https://raw.githubusercontent.com/amberphy/FIT3179/refs/heads/main/datasets/hotel_guests_by_states.csv"
+          },
+          "transform": [
+            {
+              "filter": "datum.Year == Year"
+            },
+            {
+              "lookup": "City",
+              "from": {
+                "data": {
+                  "url": "https://raw.githubusercontent.com/amberphy/FIT3179/refs/heads/main/ne_10m_admin_1_states_provinces.json",
+                  "format": {
+                    "type": "topojson",
+                    "feature": "ne_10m_admin_1_states_provinces"
+                  }
+                },
+                "key": "properties.name"
+              },
+              "as": "geo"
+            }
           ],
-          "format": ","
+          "projection": {
+            "type": "equalEarth"
+          },
+          "mark": {
+            "type": "geoshape",
+            "stroke": "white",
+            "strokeWidth": 0.8
+          },
+          "encoding": {
+            "shape": {
+              "field": "geo",
+              "type": "geojson"
+            },
+            "color": {
+              "field": "FOREIGNER",
+              "type": "quantitative",
+              "scale": {
+                "scheme": "lightorange"
+              },
+              "legend": {
+                "orient": "bottom",
+                "direction": "horizontal",
+                "columns": 6,
+                "labelLimit": 400,
+                "symbolSize": 300,
+                "titleFont": "Outfit",
+                "titleFontSize": 14,
+                "labelFont": "Outfit",
+                "labelFontSize": 12
+              }
+            },
+            "tooltip": [
+              {
+                "field": "City",
+                "type": "nominal",
+                "title": "State"
+              },
+              {
+                "field": "FOREIGNER",
+                "type": "quantitative",
+                "title": "Hotel Guests",
+                "format": ","
+              }
+            ]
+          }
+        },
+        {
+          "transform": [
+            {
+              "filter": "Year == 2019"
+            }
+            ],
+          "data": {
+            "values": [
+              {
+                "notes": "In terms of foreigners, Kuala Lumpur is the most well known.",
+                "lati": 4.5118147063479,
+                "long": 107.01806640625001,
+                "more": "With a 10 mil hotel guests, it exceeds the other states"
+              },
+              {
+                "notes": "",
+                "lati": 4.1518147063479,
+                "long": 107.01806640625001,
+                "more": "almost 5 times. It is popular for its landmarks like"
+              },
+              {
+                "notes": "",
+                "lati": 3.8018147063479,
+                "long": 107.01806640625001,
+                "more": "the Petronas Twin Towers, Batu Caves etc."
+              }
+            ]
+          },
+          "layer": [
+          {
+            "mark": {
+              "type": "text",
+              "dy": -10,
+              "dx": 5,
+              "color": "black",
+              "fontSize": 12,
+              "font": "Outfit"
+            },
+            "encoding": {
+              "longitude": {
+                "field": "long",
+                "type": "quantitative"
+              },
+              "latitude": {
+                "field": "lati",
+                "type": "quantitative"
+              },
+              "text": {
+                "field": "notes",
+                "type": "nominal"
+              }
+            }
+          },
+          {
+            "mark": {
+              "type": "text",
+              "dy": 10,
+              "dx": 5,
+              "color": "#0150a4",
+              "fontSize": 11,
+              "font": "Outfit"
+            },
+            "encoding": {
+              "longitude": {
+                "field": "long",
+                "type": "quantitative"
+              },
+              "latitude": {
+                "field": "lati",
+                "type": "quantitative"
+              },
+              "text": {
+                "field": "more",
+                "type": "nominal",
+                "format": {
+                  "expr": "replace(datum.more, '\\\\n', '\\n')"
+                }
+              }
+            }
+          }
+          ]
+        },
+        {
+          "transform": [
+            {
+              "filter": "Year == 2021"
+            }
+            ],
+          "data": {
+            "values": [
+              {
+                "notes": "Fresh out of the Covid-19, Selangor was the most visited by foreigners",
+                "lati": 4.5118147063479,
+                "long": 107.01806640625001,
+                "more": "However, the overall amount of foreigners have decreased significantly"
+              },
+              {
+                "notes": "",
+                "lati": 4.1518147063479,
+                "long": 107.01806640625001,
+                "more": "With 1 mil foreigners in 2019, now only 66k."
+              },
+              {
+                "notes": "Significant decrease in ",
+                "lati": 3.381823735328289,
+                "long": 116.411132812500011,
+                "more": ""
+              },
+              {
+                "notes": "Sabah and Sarawak",
+                "lati": 3.081823735328289,
+                "long": 116.411132812500011,
+                "more": "The most shocking decline is Sabah"
+              },
+              {
+                "notes": "",
+                "lati": 2.701823735328289,
+                "long": 116.411132812500011,
+                "more": "where the hotel guests reduced from 3 mil to 3k"
+              }
+            ]
+          },
+          "layer": [
+          {
+            "mark": {
+              "type": "text",
+              "dy": -10,
+              "dx": 5,
+              "color": "black",
+              "fontSize": 12,
+              "font": "Outfit"
+            },
+            "encoding": {
+              "longitude": {
+                "field": "long",
+                "type": "quantitative"
+              },
+              "latitude": {
+                "field": "lati",
+                "type": "quantitative"
+              },
+              "text": {
+                "field": "notes",
+                "type": "nominal"
+              }
+            }
+          },
+          {
+            "mark": {
+              "type": "text",
+              "dy": 10,
+              "dx": 5,
+              "color": "#0150a4",
+              "fontSize": 11,
+              "font": "Outfit"
+            },
+            "encoding": {
+              "longitude": {
+                "field": "long",
+                "type": "quantitative"
+              },
+              "latitude": {
+                "field": "lati",
+                "type": "quantitative"
+              },
+              "text": {
+                "field": "more",
+                "type": "nominal",
+                "format": {
+                  "expr": "replace(datum.more, '\\\\n', '\\n')"
+                }
+              }
+            }
+          }
+          ]
+        },
+        {
+          "transform": [
+            {
+              "filter": "Year == 2022"
+            }
+            ],
+          "data": {
+            "values": [
+              {
+                "notes": "In 2022, the distribution of hotel guests are well spread across states",
+                "lati": 4.5118147063479,
+                "long": 108.01806640625001,
+                "more": "Kuala Lumpur is back to being the most visited by foreigners (4 mil)"
+              },
+              {
+                "notes": "Johor became attractive to foreigners",
+                "lati": 2.1518147063479,
+                "long": 107.01806640625001,
+                "more": "Due to its proximity to Singapore, "
+              },
+              {
+                "notes": "",
+                "lati": 1.8518147063479,
+                "long": 107.01806640625001,
+                "more": "it is an accessible destination"
+              },
+              {
+                "notes": "",
+                "lati": 1.5518147063479,
+                "long": 107.01806640625001,
+                "more": "for international tourists."
+              }
+            ]
+          },
+          "layer": [
+          {
+            "mark": {
+              "type": "text",
+              "dy": -10,
+              "dx": 5,
+              "color": "black",
+              "fontSize": 12,
+              "font": "Outfit"
+            },
+            "encoding": {
+              "longitude": {
+                "field": "long",
+                "type": "quantitative"
+              },
+              "latitude": {
+                "field": "lati",
+                "type": "quantitative"
+              },
+              "text": {
+                "field": "notes",
+                "type": "nominal"
+              }
+            }
+          },
+          {
+            "mark": {
+              "type": "text",
+              "dy": 10,
+              "dx": 5,
+              "color": "#0150a4",
+              "fontSize": 11,
+              "font": "Outfit"
+            },
+            "encoding": {
+              "longitude": {
+                "field": "long",
+                "type": "quantitative"
+              },
+              "latitude": {
+                "field": "lati",
+                "type": "quantitative"
+              },
+              "text": {
+                "field": "more",
+                "type": "nominal",
+                "format": {
+                  "expr": "replace(datum.more, '\\\\n', '\\n')"
+                }
+              }
+            }
+          }
+          ]
         }
       ]
     }
-  }
+  ]
 }

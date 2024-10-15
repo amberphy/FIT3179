@@ -279,7 +279,9 @@
             "dx": 5,
             "color": "black",
             "fontSize": 12,
-            "font":"Outfit"
+            "font":"Outfit",
+            "stroke": "black",
+            "strokeWidth": 0.6
           },
           "encoding": {
             "longitude": {
@@ -302,8 +304,10 @@
             "dy": 10,
             "dx": 5,
             "color": "purple",
-            "fontSize": 11,
-            "font":"Outfit"
+            "fontSize": 12,
+            "font":"Outfit",
+            "stroke": "purple",
+            "strokeWidth": 0.6
           },
           "encoding": {
             "longitude": {
@@ -398,7 +402,7 @@
             "dx": 5,
             "color": "black",
             "fontSize": 12,
-            "font":"Outfit"
+            "font":"Outfit" 
           },
           "encoding": {
             "longitude": {
